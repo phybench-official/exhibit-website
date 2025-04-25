@@ -1,0 +1,18 @@
+{
+  "app": {
+    "welcome": "Vite + React",
+    "count": "count is {{count}}",
+    "edit": "Edit <1>src/App.tsx</1> and save to test HMR",
+    "readTheDocs": "Click on the Vite and React logos to learn more",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "hero": {
+    "introduce": "Introducing"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About"
+  }
+}

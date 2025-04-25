@@ -1,0 +1,18 @@
+{
+  "app": {
+    "welcome": "Vite反应",
+    "count": "当前计数为 {{count}}",
+    "edit": "编辑 <1>src/App.tsx</1> 并保存以测试 HMR",
+    "readTheDocs": "点击 Vite 和 React 的图标了解更多",
+    "light": "浅色模式",
+    "dark": "深色模式",
+    "system": "跟随系统"
+  },
+  "hero": {
+    "introduce": "隆重推出"
+  },
+  "nav": {
+    "home": "主页",
+    "about": "关于"
+  }
+}
