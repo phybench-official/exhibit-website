@@ -25,6 +25,12 @@ declare global {
       attach: (selector: string, options: Record<string, unknown>) => Array<{
         element: HTMLElement;
         on: (event: string, callback: () => void) => void;
+        next: () => void;
+        previous: () => void;
+        show: (index?: number, force?: boolean) => void;
+        start: () => void;
+        stop: () => void;
+        pause: () => void;
       }>;
     };
     dataLayer?: Array<Record<string, unknown>>;
@@ -47,84 +53,341 @@ function App() {
 
   // Load scripts and initialize carousel when component mounts
   useEffect(() => {
-    // Load bulmaCarousel script
-    const carouselScript = document.createElement('script');
-    carouselScript.src = './assets/js/bulma-carousel.min.js';
-    carouselScript.async = true;
-    document.body.appendChild(carouselScript);
-
-    // Load MathJax script for LaTeX rendering
-    const mathJaxScript = document.createElement('script');
-    mathJaxScript.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js';
-    mathJaxScript.async = true;
-    document.body.appendChild(mathJaxScript);
-
-    // Initialize MathJax configuration
-    window.MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        processEscapes: true
-      },
-      svg: {
-        fontCache: 'global'
-      },
-      startup: {
-        typeset: true
-      },
-      options: {
-        renderActions: {
-          addMenu: [],
-          checkLoading: []
-        }
-      }
-    };
-
-    // Initialize carousel after script is loaded
-    carouselScript.onload = () => {
+    // Function to initialize the carousel
+    const initCarousel = () => {
+      console.log("Initializing carousel...");
       if (typeof window !== 'undefined' && window.bulmaCarousel) {
-        const carousel = window.bulmaCarousel.attach('#problem-carousel', {
-          slidesToScroll: 1,
-          slidesToShow: 1,
-          navigation: true,
-          pagination: false,
-          loop: true,
-          autoplay: false,
-          duration: 500,
-          timing: 'cubic-bezier(0.22, 0.61, 0.36, 1)',
-        })[0];
+        console.log("bulmaCarousel is available");
+        try {
+          // First, destroy any existing carousel instances to prevent conflicts
+          const existingCarousel = document.querySelector('#problem-carousel');
+          if (existingCarousel && existingCarousel.classList.contains('carousel-initialized')) {
+            console.log("Removing existing carousel instance");
+            existingCarousel.classList.remove('carousel-initialized');
+          }
 
-        if (carousel) {
-          const navLeft = carousel.element.querySelector('.carousel-nav-left') as HTMLElement;
-          const navRight = carousel.element.querySelector('.carousel-nav-right') as HTMLElement;
+          // Initialize the carousel with explicit options
+          const carousels = window.bulmaCarousel.attach('#problem-carousel', {
+            slidesToScroll: 1,
+            slidesToShow: 1,
+            navigation: true,  // Enable navigation
+            navigationKeys: true, // Enable keyboard navigation
+            navigationSwipe: true, // Enable swipe navigation
+            pagination: false,
+            loop: true,
+            infinite: true,  // Enable infinite scrolling
+            autoplay: false,
+            duration: 500,
+            timing: 'cubic-bezier(0.22, 0.61, 0.36, 1)',
+          });
 
-          const lock = () => {
-            if (navLeft && navRight) {
-              navLeft.style.pointerEvents = navRight.style.pointerEvents = 'none';
+          console.log("Carousel initialized:", carousels);
+
+          if (carousels && carousels.length > 0) {
+            const carousel = carousels[0];
+            console.log("Carousel element:", carousel.element);
+
+            // Get navigation elements
+            const navLeft = carousel.element.querySelector('.carousel-nav-left') as HTMLElement;
+            const navRight = carousel.element.querySelector('.carousel-nav-right') as HTMLElement;
+
+            console.log("Navigation elements:", { navLeft, navRight });
+
+            // Add explicit click handlers as a fallback
+            if (navLeft) {
+              navLeft.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log("Manual previous click");
+                carousel.previous();
+              });
             }
-          };
-          const unlock = () => {
-            if (navLeft && navRight) {
-              navLeft.style.pointerEvents = navRight.style.pointerEvents = 'auto';
-            }
-          };
 
-          unlock();
-          carousel.on('before:show', lock);
-          carousel.on('after:show', unlock);
+            if (navRight) {
+              navRight.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log("Manual next click");
+                carousel.next();
+              });
+            }
+
+            // Lock/unlock navigation during transitions
+            const lock = () => {
+              if (navLeft && navRight) {
+                navLeft.style.pointerEvents = navRight.style.pointerEvents = 'none';
+              }
+            };
+            const unlock = () => {
+              if (navLeft && navRight) {
+                navLeft.style.pointerEvents = navRight.style.pointerEvents = 'auto';
+              }
+            };
+
+            unlock();
+            carousel.on('before:show', lock);
+            carousel.on('after:show', unlock);
+
+            // Mark the carousel as initialized
+            carousel.element.classList.add('carousel-initialized');
+          } else {
+            console.error("Failed to initialize carousel: No carousel instances returned");
+
+            // Fallback: Add manual navigation if carousel initialization fails
+            setupManualCarouselNavigation();
+          }
+        } catch (error) {
+          console.error("Error initializing carousel:", error);
+
+          // Fallback: Add manual navigation if carousel initialization fails
+          setupManualCarouselNavigation();
         }
+      } else {
+        console.error("bulmaCarousel is not available");
+
+        // Fallback: Add manual navigation if bulmaCarousel is not available
+        setupManualCarouselNavigation();
       }
     };
 
-    const typesettingTimeout = setTimeout(() => {
-      if (window.MathJax && window.MathJax.typeset) {
-        window.MathJax.typeset();
-      }
-    }, 1000);
+    // Fallback function to set up manual carousel navigation
+    const setupManualCarouselNavigation = () => {
+      console.log("Setting up manual carousel navigation");
+      const carousel = document.querySelector('#problem-carousel');
+      if (!carousel) return;
 
+      const items = carousel.querySelectorAll('.carousel-item');
+      if (items.length === 0) return;
+
+      const navLeft = carousel.querySelector('.carousel-nav-left') as HTMLElement;
+      const navRight = carousel.querySelector('.carousel-nav-right') as HTMLElement;
+
+      let currentIndex = 0;
+
+      const showSlide = (index: number) => {
+        // Hide all slides
+        items.forEach((item) => {
+          item.classList.remove('is-active');
+        });
+
+        // Show the current slide
+        if (index >= 0 && index < items.length) {
+          items[index].classList.add('is-active');
+          currentIndex = index;
+        }
+      };
+
+      // Initialize with the first slide
+      showSlide(0);
+
+      // Add click handlers to navigation buttons
+      if (navLeft) {
+        navLeft.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log("Manual previous click (fallback)");
+          let newIndex = currentIndex - 1;
+          if (newIndex < 0) newIndex = items.length - 1;
+          showSlide(newIndex);
+        });
+      }
+
+      if (navRight) {
+        navRight.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log("Manual next click (fallback)");
+          let newIndex = currentIndex + 1;
+          if (newIndex >= items.length) newIndex = 0;
+          showSlide(newIndex);
+        });
+      }
+    };
+
+    // Load bulmaCarousel script
+    const loadCarouselScript = () => {
+      return new Promise<void>((resolve, reject) => {
+        try {
+          const existingScript = document.querySelector('script[src*="bulma-carousel.min.js"]');
+          if (existingScript) {
+            console.log("Carousel script already loaded");
+            resolve();
+            return;
+          }
+
+          const carouselScript = document.createElement('script');
+          carouselScript.src = './assets/js/bulma-carousel.min.js';
+          carouselScript.async = false;
+          carouselScript.onload = () => {
+            console.log("Carousel script loaded successfully");
+            resolve();
+          };
+          carouselScript.onerror = (e) => {
+            console.error("Error loading carousel script:", e);
+            reject(e);
+          };
+          document.head.appendChild(carouselScript);
+        } catch (error) {
+          console.error("Error in loadCarouselScript:", error);
+          reject(error);
+        }
+      });
+    };
+
+    // Load MathJax script
+    const loadMathJaxScript = () => {
+      return new Promise<void>((resolve, reject) => {
+        try {
+          const existingScript = document.querySelector('script[src*="mathjax"]');
+          if (existingScript) {
+            console.log("MathJax script already loaded");
+            resolve();
+            return;
+          }
+
+          // Initialize MathJax configuration
+          window.MathJax = {
+            tex: {
+              inlineMath: [['$', '$'], ['\\(', '\\)']],
+              processEscapes: true
+            },
+            svg: {
+              fontCache: 'global'
+            },
+            startup: {
+              typeset: true
+            },
+            options: {
+              renderActions: {
+                addMenu: [],
+                checkLoading: []
+              }
+            }
+          };
+
+          const mathJaxScript = document.createElement('script');
+          mathJaxScript.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js';
+          mathJaxScript.async = true;
+          mathJaxScript.onload = () => {
+            console.log("MathJax script loaded successfully");
+            resolve();
+          };
+          mathJaxScript.onerror = (e) => {
+            console.error("Error loading MathJax script:", e);
+            reject(e);
+          };
+          document.head.appendChild(mathJaxScript);
+        } catch (error) {
+          console.error("Error in loadMathJaxScript:", error);
+          reject(error);
+        }
+      });
+    };
+
+    // Function to add direct event listeners to navigation buttons
+    const addDirectNavListeners = () => {
+      console.log("Adding direct navigation listeners");
+
+      // Get the carousel and navigation elements
+      const carousel = document.querySelector('#problem-carousel');
+      if (!carousel) {
+        console.error("Carousel element not found");
+        return;
+      }
+
+      const navLeft = document.querySelector('#carousel-nav-left');
+      const navRight = document.querySelector('#carousel-nav-right');
+      const items = carousel.querySelectorAll('.carousel-item');
+
+      if (!items.length) {
+        console.error("No carousel items found");
+        return;
+      }
+
+      console.log(`Found ${items.length} carousel items`);
+
+      // Function to find the currently active item
+      const findActiveIndex = () => {
+        let activeIndex = 0;
+        items.forEach((item, index) => {
+          if (item.classList.contains('is-active')) {
+            activeIndex = index;
+          }
+        });
+        return activeIndex;
+      };
+
+      // Function to show a specific slide
+      const showSlide = (index: number) => {
+        // Ensure index is within bounds
+        let validIndex = index;
+        if (validIndex < 0) validIndex = items.length - 1;
+        if (validIndex >= items.length) validIndex = 0;
+
+        // Hide all slides
+        items.forEach(item => item.classList.remove('is-active'));
+
+        // Show the selected slide
+        items[validIndex].classList.add('is-active');
+
+        console.log(`Showing slide ${validIndex}`);
+      };
+
+      // Add click event to previous button
+      if (navLeft) {
+        navLeft.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log("Direct previous click");
+          const currentIndex = findActiveIndex();
+          showSlide(currentIndex - 1);
+        });
+      }
+
+      // Add click event to next button
+      if (navRight) {
+        navRight.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log("Direct next click");
+          const currentIndex = findActiveIndex();
+          showSlide(currentIndex + 1);
+        });
+      }
+    };
+
+    // Main initialization function
+    const initialize = async () => {
+      try {
+        // Load scripts
+        await Promise.all([loadCarouselScript(), loadMathJaxScript()]);
+
+        // Wait for DOM to be fully ready
+        setTimeout(() => {
+          // Initialize carousel
+          initCarousel();
+
+          // Add direct event listeners as a fallback
+          setTimeout(() => {
+            addDirectNavListeners();
+          }, 1000);
+
+          // Initialize MathJax
+          if (window.MathJax && window.MathJax.typeset) {
+            window.MathJax.typeset();
+          }
+        }, 500);
+      } catch (error) {
+        console.error("Initialization error:", error);
+      }
+    };
+
+    // Start initialization
+    initialize();
+
+    // Cleanup function
     return () => {
-      clearTimeout(typesettingTimeout);
-      document.body.removeChild(carouselScript);
-      document.body.removeChild(mathJaxScript);
+      // No need to remove scripts as they might be used by other components
     };
   }, []);
 
@@ -311,20 +574,33 @@ function App() {
             <div className="column is-four-fifths">
               <h2 className="title is-3">📚 Example Problems</h2>
               <div id="problem-carousel" className="carousel carousel-animated carousel-animate-slide" data-autoplay="false">
-                <div className="carousel-item is-active">
-                  <img src={problem1Img} alt="Problem 1" />
+                <div className="carousel-container">
+                  <div className="carousel-item is-active">
+                    <img src={problem1Img} alt="Problem 1" />
+                  </div>
+                  <div className="carousel-item">
+                    <img src={problem2Img} alt="Problem 2" />
+                  </div>
+                  <div className="carousel-item">
+                    <img src={problem3Img} alt="Problem 3" />
+                  </div>
+                  <div className="carousel-item">
+                    <img src={problem4Img} alt="Problem 4" />
+                  </div>
+                  <div className="carousel-item">
+                    <img src={problem5Img} alt="Problem 5" />
+                  </div>
                 </div>
-                <div className="carousel-item">
-                  <img src={problem2Img} alt="Problem 2" />
+                {/* Navigation buttons outside the container for better visibility */}
+                <div className="carousel-nav-left" id="carousel-nav-left">
+                  <span className="icon">
+                    <i className="fas fa-chevron-left fa-lg"></i>
+                  </span>
                 </div>
-                <div className="carousel-item">
-                  <img src={problem3Img} alt="Problem 3" />
-                </div>
-                <div className="carousel-item">
-                  <img src={problem4Img} alt="Problem 4" />
-                </div>
-                <div className="carousel-item">
-                  <img src={problem5Img} alt="Problem 5" />
+                <div className="carousel-nav-right" id="carousel-nav-right">
+                  <span className="icon">
+                    <i className="fas fa-chevron-right fa-lg"></i>
+                  </span>
                 </div>
               </div>
 
