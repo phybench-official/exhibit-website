@@ -1,0 +1,201 @@
+/* PHYBench Styles */
+
+/* Math Styles */
+.math-inline {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+
+/* Fix for MathJax rendering */
+.MathJax {
+  display: inline-block !important;
+}
+
+/* General Styles */
+.container.is-max-desktop {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-body {
+  padding: 3rem 1.5rem;
+}
+
+.section {
+  padding: 3rem 1.5rem;
+}
+
+.publication-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.publication-authors {
+  margin-bottom: 1rem;
+}
+
+.author-block {
+  display: inline-block;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.publication-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.link-block {
+  margin: 0 0.25rem;
+}
+
+.external-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.button.is-normal {
+  height: 2.5rem;
+  padding: 0 1rem;
+}
+
+.button.is-rounded {
+  border-radius: 9999px;
+}
+
+.button.is-dark {
+  background-color: #363636;
+  color: #fff;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Teaser Section */
+.hero.teaser {
+  background-color: transparent;
+}
+
+.hero-body-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.teaser-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.dnerf {
+  font-weight: bold;
+  color: #ff5252;
+}
+
+/* Content Styles */
+.content.has-text-justified {
+  text-align: justify;
+}
+
+.content h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.content h4 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.content ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.content ul ul {
+  margin-top: 0.5rem;
+}
+
+.content li {
+  margin-bottom: 0.5rem;
+}
+
+/* Carousel Styles */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1.5rem;
+}
+
+.carousel-item img {
+  max-width: 100%;
+  height: auto;
+}
+
+.carousel-nav-left,
+.carousel-nav-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.carousel-nav-left {
+  left: 10px;
+}
+
+.carousel-nav-right {
+  right: 10px;
+}
+
+/* Citation Section */
+pre.has-background-light {
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  padding: 1rem;
+  overflow-x: auto;
+  font-family: "Fira Code", monospace;
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .publication-title {
+    font-size: 1.75rem;
+  }
+
+  .is-size-5 {
+    font-size: 1rem !important;
+  }
+
+  .column.is-four-fifths {
+    width: 100%;
+  }
+}
