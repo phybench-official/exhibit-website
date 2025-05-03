@@ -99,13 +99,71 @@
 }
 
 .dnerf {
-  font-weight: bold;
-  color: #ff5252;
+  font-variant: small-caps;
 }
 
 /* Content Styles */
 .content.has-text-justified {
   text-align: justify;
+}
+
+/* Heading Styles using Bulma */
+h1, .title.is-1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.125;
+  margin-bottom: 1rem;
+  color: var(--foreground, #4a4a4a);
+}
+
+h2, .title.is-2 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.125;
+  margin-bottom: 0.875rem;
+  color: var(--foreground, #4a4a4a);
+}
+
+h3, .title.is-3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.125;
+  margin-bottom: 0.75rem;
+  color: var(--foreground, #4a4a4a);
+}
+
+h4, .title.is-4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.125;
+  margin-bottom: 0.625rem;
+  color: var(--foreground, #4a4a4a);
+}
+
+h5, .title.is-5 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.125;
+  margin-bottom: 0.5rem;
+  color: var(--foreground, #4a4a4a);
+}
+
+h6, .title.is-6 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.125;
+  margin-bottom: 0.5rem;
+  color: var(--foreground, #4a4a4a);
+}
+
+.content h1 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.content h2 {
+  margin-top: 1.75rem;
+  margin-bottom: 1rem;
 }
 
 .content h3 {
@@ -116,6 +174,49 @@
 .content h4 {
   margin-top: 1.25rem;
   margin-bottom: 0.75rem;
+}
+
+/* Subtitle styles */
+.subtitle {
+  color: var(--foreground, #4a4a4a);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.subtitle.is-1 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.subtitle.is-2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.subtitle.is-3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.subtitle.is-4 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.subtitle.is-5 {
+  font-size: 1.125rem;
+  margin-bottom: 0.75rem;
+}
+
+.subtitle.is-6 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Title + Subtitle combination */
+.title:not(.is-spaced) + .subtitle {
+  margin-top: -1rem;
+  margin-bottom: 1.5rem;
 }
 
 .content ul {
@@ -197,5 +298,51 @@ pre.has-background-light {
 
   .column.is-four-fifths {
     width: 100%;
+  }
+
+  /* Responsive heading sizes */
+  h1, .title.is-1 {
+    font-size: 2rem;
+  }
+
+  h2, .title.is-2 {
+    font-size: 1.75rem;
+  }
+
+  h3, .title.is-3 {
+    font-size: 1.5rem;
+  }
+
+  h4, .title.is-4 {
+    font-size: 1.25rem;
+  }
+
+  h5, .title.is-5 {
+    font-size: 1.125rem;
+  }
+
+  h6, .title.is-6 {
+    font-size: 1rem;
+  }
+
+  /* Responsive subtitle sizes */
+  .subtitle.is-1 {
+    font-size: 1.75rem;
+  }
+
+  .subtitle.is-2 {
+    font-size: 1.5rem;
+  }
+
+  .subtitle.is-3 {
+    font-size: 1.25rem;
+  }
+
+  .subtitle.is-4 {
+    font-size: 1.125rem;
+  }
+
+  .subtitle.is-5, .subtitle.is-6 {
+    font-size: 1rem;
   }
 }

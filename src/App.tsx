@@ -4,6 +4,20 @@ import viteLogo from '/vite.svg'
 import { useTranslation } from 'react-i18next'
 import './assets/css/phybench.css'
 
+// Import PHYBench images
+import testExampleImg from './assets/images/test_example.jpg'
+import frameworkImg from './assets/images/framework.jpg'
+import problem1Img from './assets/images/problem1.jpg'
+import problem2Img from './assets/images/problem2.jpg'
+import problem3Img from './assets/images/problem3.jpg'
+import problem4Img from './assets/images/problem4.jpg'
+import problem5Img from './assets/images/problem5.jpg'
+import fig3Img from './assets/docs/figures/fig3.png'
+import fig4aImg from './assets/docs/figures/fig4-a.png'
+import fig4bImg from './assets/docs/figures/fig4-b.png'
+import fig5Img from './assets/docs/figures/fig5.png'
+import boxExampleImg from './assets/docs/figures/box1-example_reasoning_process.png'
+
 // Declare bulmaCarousel and MathJax for TypeScript
 declare global {
   interface Window {
@@ -256,7 +270,7 @@ function App() {
         <div className="container is-max-desktop">
           <div className="hero-body">
             <div className="hero-body-image">
-              <img src="./assets/images/test_example.jpg" className="teaser-image" alt="Teaser image" />
+              <img src={testExampleImg} className="teaser-image" alt="Teaser image" />
             </div>
             <h2 className="subtitle has-text-centered">
               <span className="dnerf">PHYBench</span> is a benchmark for evaluating the physical reasoning capabilities of large
@@ -298,19 +312,19 @@ function App() {
               <h2 className="title is-3">📚 Example Problems</h2>
               <div id="problem-carousel" className="carousel carousel-animated carousel-animate-slide" data-autoplay="false">
                 <div className="carousel-item is-active">
-                  <img src="./assets/images/problem1.jpg" alt="Problem 1" />
+                  <img src={problem1Img} alt="Problem 1" />
                 </div>
                 <div className="carousel-item">
-                  <img src="./assets/images/problem2.jpg" alt="Problem 2" />
+                  <img src={problem2Img} alt="Problem 2" />
                 </div>
                 <div className="carousel-item">
-                  <img src="./assets/images/problem3.jpg" alt="Problem 3" />
+                  <img src={problem3Img} alt="Problem 3" />
                 </div>
                 <div className="carousel-item">
-                  <img src="./assets/images/problem4.jpg" alt="Problem 4" />
+                  <img src={problem4Img} alt="Problem 4" />
                 </div>
                 <div className="carousel-item">
-                  <img src="./assets/images/problem5.jpg" alt="Problem 5" />
+                  <img src={problem5Img} alt="Problem 5" />
                 </div>
               </div>
 
@@ -331,7 +345,7 @@ function App() {
         <div className="container is-max-desktop">
           <div className="hero-body">
             <div className="hero-body-image">
-              <img src="./assets/images/framework.jpg" className="teaser-image" alt="Framework image" />
+              <img src={frameworkImg} className="teaser-image" alt="Framework image" />
             </div>
           </div>
         </div>
@@ -447,20 +461,20 @@ function App() {
               <h2 className="title is-3">📝 Main Results</h2>
               <div className="content has-text-justified">
                 <p>The results of the evaluation are shown in the following figure:</p>
-                <img src="./assets/docs/figures/fig3.png" alt="Evaluation Results" style={{ maxWidth: '100%', marginBottom: '1.5rem' }} />
+                <img src={fig3Img} alt="Evaluation Results" style={{ maxWidth: '100%', marginBottom: '1.5rem' }} />
                 <ol>
                   <li><strong>Significant Performance Gap</strong>: Even state-of-the-art LLMs significantly lag behind human experts in physical reasoning. The highest-performing model, Gemini 2.5 Pro, achieved only a 36.9% accuracy, compared to the human baseline of 61.9%.</li>
                   <li><strong>EED Score Advantages</strong>: The EED Score provides a more nuanced evaluation of model performance compared to traditional binary scoring methods.</li>
                   <li><strong>Domain-Specific Strengths</strong>: Different models exhibit varying strengths in different domains of physics:</li>
                 </ol>
-                <img src="./assets/docs/figures/fig4-a.png" alt="Domain Performance" style={{ maxWidth: '100%', marginBottom: '1.5rem' }} />
+                <img src={fig4aImg} alt="Domain Performance" style={{ maxWidth: '100%', marginBottom: '1.5rem' }} />
                 <ul>
                   <li>Gemini 2.5 Pro shows strong performance across most domains</li>
                   <li>DeepSeek-R1 and o3-mini (high) show comparable performance in mechanics and electricity</li>
                   <li>Most models struggle with advanced physics and modern physics</li>
                 </ul>
                 <p><strong>Difficulty Handling</strong>: Comparing the advantage across problem difficulties, Gemini 2.5 Pro gains a pronounced edge on harder problems, followed by o3 (high).</p>
-                <img src="./assets/docs/figures/fig4-b.png" alt="Difficulty Performance" style={{ maxWidth: '100%', marginBottom: '1.5rem' }} />
+                <img src={fig4bImg} alt="Difficulty Performance" style={{ maxWidth: '100%', marginBottom: '1.5rem' }} />
               </div>
             </div>
           </div>
@@ -473,13 +487,13 @@ function App() {
             <div className="column is-four-fifths">
               <h2 className="title is-3">😵‍💫 Error Analysis</h2>
               <div className="content has-text-justified">
-                <img src="./assets/docs/figures/fig5.png" alt="Error Analysis" style={{ maxWidth: '100%', marginBottom: '1.5rem' }} />
+                <img src={fig5Img} alt="Error Analysis" style={{ maxWidth: '100%', marginBottom: '1.5rem' }} />
                 <p>We categorize the capabilities assessed by the PHYBench benchmark into two key dimensions: <strong>Physical Perception (PP)</strong> and <strong>Robust Reasoning (RR)</strong>:</p>
                 <ol>
                   <li><strong>Physical Perception (PP) Errors</strong>: During this phase, models engage in intensive semantic reasoning, expending significant cognitive effort to identify relevant physical objects, variables, and dynamics. Models make qualitative judgments about which physical effects are significant and which can be safely ignored. PP manifests as critical decision nodes in the reasoning chain. An example of a PP error is shown in Example Problem 1.</li>
                   <li><strong>Robust Reasoning (RR) Errors</strong>: In this phase, models produce numerous lines of equations and perform symbolic reasoning. This process forms the connecting chains between perception nodes. RR involves consistent mathematical derivation, equation solving, and proper application of established conditions. An example of a RR error is shown in Example Problem 2.</li>
                 </ol>
-                <img src="./assets/docs/figures/box1-example_reasoning_process.png" alt="Error Example" style={{ maxWidth: '100%', marginBottom: '1.5rem' }} />
+                <img src={boxExampleImg} alt="Error Example" style={{ maxWidth: '100%', marginBottom: '1.5rem' }} />
               </div>
             </div>
           </div>
