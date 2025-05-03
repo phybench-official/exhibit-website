@@ -18,6 +18,9 @@ export function LanguageToggle() {
     i18n.changeLanguage(lng)
     localStorage.setItem("userLanguage", lng);
     
+    // 更新HTML lang属性
+    document.documentElement.lang = lng;
+    
     if (lang) {
       // 获取当前路径并替换语言参数
       const currentPath = window.location.pathname

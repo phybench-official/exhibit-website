@@ -29,6 +29,11 @@ export const I18nProvider = ({ children }: I18nProviderProps) => {
   // 从URL中获取语言参数
   const { lang } = useParams<{ lang?: string }>();
   
+  // 更新HTML的lang属性
+  const updateHtmlLang = (lang: string) => {
+    document.documentElement.lang = lang;
+  };
+  
   // 更改语言的函数
   const changeLanguage = (newLang: string) => {
     if (SUPPORTED_LANGUAGES.includes(newLang)) {
@@ -36,6 +41,7 @@ export const I18nProvider = ({ children }: I18nProviderProps) => {
       localStorage.setItem('userLanguage', newLang);
       i18n.changeLanguage(newLang);
       setCurrentLanguage(newLang);
+      updateHtmlLang(newLang);
     }
   };
   
@@ -63,6 +69,7 @@ export const I18nProvider = ({ children }: I18nProviderProps) => {
     
     i18n.changeLanguage(detectedLanguage);
     setCurrentLanguage(detectedLanguage);
+    updateHtmlLang(detectedLanguage);
   }, [lang]);
   
   return (

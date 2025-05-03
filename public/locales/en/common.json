@@ -13,6 +13,7 @@
   },
   "nav": {
     "home": "Home",
-    "about": "About"
+    "about": "About",
+    "doc": "doc"
   }
 }

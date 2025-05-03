@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
 import { useTranslation } from 'react-i18next'
 
 function App() {
@@ -10,7 +9,7 @@ function App() {
 
   return (
     <>
-      <div className="mt-32">
+      <div className="pt-32">
         <a href="https://vite.dev" target="_blank" rel='noreferrer'>
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
