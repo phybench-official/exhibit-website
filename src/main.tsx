@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
 import "./index.css";
 import App from "./components/App.tsx";
-import LeaderBoard from "./components/LeaderBoard.tsx";
+import Leaderboard from "./components/Leaderboard.tsx";
 import ParticleRing from "./components/particle-ring";
 import { RootLayout } from "./components/root-layout.tsx";
 import { ReactLenis } from "lenis/react";
@@ -35,7 +35,7 @@ function LenisWrapper() {
             <Route index element={<ParticleRing />} />
             <Route path="about" element={<App />} />
             <Route path="doc" element={<App />} />
-            <Route path="leaderboard" element={<LeaderBoard />} />
+            <Route path="leaderboard" element={<Leaderboard />} />
           </Route>
         </Routes>
       </BrowserRouter>

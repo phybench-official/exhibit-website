@@ -111,7 +111,8 @@
 }
 
 /* Heading Styles using Bulma */
-h1, .title.is-1 {
+h1,
+.title.is-1 {
   font-size: 2.5rem;
   font-weight: 600;
   line-height: 1.125;
@@ -119,7 +120,8 @@ h1, .title.is-1 {
   color: var(--foreground, #4a4a4a);
 }
 
-h2, .title.is-2 {
+h2,
+.title.is-2 {
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.125;
@@ -127,7 +129,8 @@ h2, .title.is-2 {
   color: var(--foreground, #4a4a4a);
 }
 
-h3, .title.is-3 {
+h3,
+.title.is-3 {
   font-size: 1.75rem;
   font-weight: 600;
   line-height: 1.125;
@@ -135,7 +138,8 @@ h3, .title.is-3 {
   color: var(--foreground, #4a4a4a);
 }
 
-h4, .title.is-4 {
+h4,
+.title.is-4 {
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.125;
@@ -143,7 +147,8 @@ h4, .title.is-4 {
   color: var(--foreground, #4a4a4a);
 }
 
-h5, .title.is-5 {
+h5,
+.title.is-5 {
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.125;
@@ -151,7 +156,8 @@ h5, .title.is-5 {
   color: var(--foreground, #4a4a4a);
 }
 
-h6, .title.is-6 {
+h6,
+.title.is-6 {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.125;
@@ -362,27 +368,33 @@ pre.has-background-light {
   }
 
   /* Responsive heading sizes */
-  h1, .title.is-1 {
+  h1,
+  .title.is-1 {
     font-size: 2rem;
   }
 
-  h2, .title.is-2 {
+  h2,
+  .title.is-2 {
     font-size: 1.75rem;
   }
 
-  h3, .title.is-3 {
+  h3,
+  .title.is-3 {
     font-size: 1.5rem;
   }
 
-  h4, .title.is-4 {
+  h4,
+  .title.is-4 {
     font-size: 1.25rem;
   }
 
-  h5, .title.is-5 {
+  h5,
+  .title.is-5 {
     font-size: 1.125rem;
   }
 
-  h6, .title.is-6 {
+  h6,
+  .title.is-6 {
     font-size: 1rem;
   }
 
@@ -403,7 +415,8 @@ pre.has-background-light {
     font-size: 1.125rem;
   }
 
-  .subtitle.is-5, .subtitle.is-6 {
+  .subtitle.is-5,
+  .subtitle.is-6 {
     font-size: 1rem;
   }
 }
