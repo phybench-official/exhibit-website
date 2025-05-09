@@ -14,7 +14,6 @@
   "nav": {
     "home": "主页",
     "about": "关于",
-    "doc": "文档",
-    "leaderboard": "Leader Board"
+    "doc": "文档"
   }
 }

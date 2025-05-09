@@ -14,7 +14,6 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "doc": "doc",
-    "leaderboard": "Leader Board"
+    "doc": "doc"
   }
 }
