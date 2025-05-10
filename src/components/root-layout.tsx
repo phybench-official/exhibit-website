@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import useLocalizedPath from "@/hooks/useLocalizedPath";
 import { Button } from "./ui/button";
 import { Menu, X } from "lucide-react";
+import useScrollDirection from "@/hooks/useScrollDirection";
 
 function GithubIcon() {
   return (
@@ -25,6 +26,11 @@ export function RootLayout() {
   const getLocalizedPath = useLocalizedPath();
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation(); // 添加useLocation钩子获取当前路由信息
+  // 使用自定义钩子获取滚动方向和位置
+  const { scrollDir, scrollY } = useScrollDirection();
+  
+  // 计算导航栏是否应该显示
+  const shouldShowNav = scrollDir === "up" || scrollY < 100 || menuOpen;
   
   // 设置当前页面的路径为活动链接，并在路由变化时更新
   useEffect(() => {
@@ -39,7 +45,8 @@ export function RootLayout() {
       <>
         <li><TubelightNavLink to="/">{t('nav.home')}</TubelightNavLink></li>
         <li><TubelightNavLink to="/doc">{t('nav.doc')}</TubelightNavLink></li>
-        <li><TubelightNavLink to="/about">{t('nav.about')}</TubelightNavLink></li>
+        <li><TubelightNavLink to="/leaderboard">{t('nav.leaderboard')}</TubelightNavLink></li>
+        <li><TubelightNavLink to="/news">{t('nav.news')}</TubelightNavLink></li>
       </>
     )
   }
@@ -79,8 +86,9 @@ export function RootLayout() {
       <I18nProvider>
         <main className="flex-grow">
           <header className={cn(
-            "absolute top-0 z-40 w-full px-4 md:px-12 transition-a;; duration-300 ease-in-out",
+            "fixed top-0 z-40 w-full px-4 md:px-12 transition-all duration-300 ease-in-out",
             activeLink === "/" ? "bg-black/25 backdrop-blur " : "border-b bg-background/25 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-primary/30",
+            shouldShowNav ? "translate-y-0" : "-translate-y-100"
           )}>
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center gap-2">
