@@ -1,8 +1,8 @@
-import { StrictMode, Suspense } from 'react'
+import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from "react-router";
 import './index.css'
-// import ParticleRing from './components/particle-ring';
+import ParticleRing from './components/particle-ring';
 // import LeaderBoard from './components/leader-board.tsx';
 // import { MainDoc } from './components/main-doc.tsx'
 import { RootLayout } from './components/root-layout.tsx'
@@ -14,7 +14,7 @@ import { cancelFrame, frame } from 'framer-motion';
 import { useEffect, useRef, lazy } from 'react';
 import gsap from 'gsap'
 
-const ParticleRing = lazy(() => import('./components/particle-ring.tsx'))
+
 const LeaderBoard = lazy(() => import('./components/leader-board.tsx'))
 const MainDoc = lazy(() => import('./components/main-doc.tsx'))
 
@@ -44,18 +44,16 @@ function LenisWrapper() {
 
   return (
     <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
-      <Suspense fallback={<div>Loading...</div>}>
-        <BrowserRouter>
-          <Routes>
-            <Route path=':lang?' element={<RootLayout/>}>
-              <Route index element={<ParticleRing />} />
-              <Route path='news' element={< br/>} />
-              <Route path='doc' element={<MainDoc />} />
-              <Route path='leaderboard' element={<LeaderBoard />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </Suspense>
+      <BrowserRouter>
+        <Routes>
+          <Route path=':lang?' element={<RootLayout/>}>
+            <Route index element={<ParticleRing />} />
+            <Route path='news' element={< br/>} />
+            <Route path='doc' element={<MainDoc />} />
+            <Route path='leaderboard' element={<LeaderBoard />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </ReactLenis>
   )
 }

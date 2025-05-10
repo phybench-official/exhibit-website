@@ -110,7 +110,7 @@ export function RootLayout() {
                   <Button 
                     variant="ghost" 
                     size="icon"
-                    className="relative z-50"
+                    className="relative z-50 text-black bg-white dark:bg-transparent rounded-full dark:text-white"
                     onClick={() => setMenuOpen(!menuOpen)}
                   >
                     {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -121,7 +121,8 @@ export function RootLayout() {
               {/* 移动端展开菜单 */}
               <div 
                 className={cn(
-                  "fixed inset-0 h-[40vh] z-40 bg-background/35 backdrop-blur-2xl dark:bg-background transition-all duration-300 ease-in-out flex flex-col items-center justify-center md:hidden",
+                  "fixed inset-0 h-[40vh] z-40 bg-white/95 backdrop-blur-3xl dark:bg-black/85  transition-all duration-300 ease-in-out flex flex-col items-center justify-center md:hidden",
+                  activeLink === "/" && "bg-black/85",
                   menuOpen 
                     ? "clip-path-circle-full opacity-100 pointer-events-auto" 
                     : "clip-path-circle-0 opacity-0 pointer-events-none"
