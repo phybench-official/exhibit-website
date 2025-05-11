@@ -18,7 +18,7 @@ i18n
     ns: ['common'],
     defaultNS: 'common',
     fallbackLng: 'en',
-    debug: true,
+    debug: process.env.NODE_ENV === 'development'
   });
 
 export default i18n;
