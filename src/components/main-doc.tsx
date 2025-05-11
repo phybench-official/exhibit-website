@@ -15,6 +15,7 @@ export default function MainDoc() {
             typeset: true
           }
         }}
+        src="/mathjax/tex-mml-chtml.js"
       >
         <DocContent/>
       </MathJaxContext>

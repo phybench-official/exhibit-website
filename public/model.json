@@ -1,0 +1,197 @@
+[
+  {
+    "name": "Gemini 2.5 pro",
+    "id": "gemini-2.5-pro-preview-03-25",
+    "icon": "gemini",
+    "org": "Google",
+    "score": {
+      "eed": 49.46,
+      "MECHANICS": 50.47,
+      "ELECTRICITY": 51.02,
+      "THERMODYNAMICS": 49.45,
+      "OPTICS": 44.66,
+      "MODERN": 44.74,
+      "ADVANCED": 50.01
+    }
+  },
+  {
+    "name": "o3 (high)",
+    "id": "o3-high",
+    "icon": "openai",
+    "org": "OpenAI",
+    "score": {
+      "eed": 46.37,
+      "MECHANICS": 48.22,
+      "ELECTRICITY": 46.65,
+      "THERMODYNAMICS": 47.45,
+      "OPTICS": 41.66,
+      "MODERN": 39.85,
+      "ADVANCED": 48.27
+    }
+  },
+  {
+    "name": "DeepSeek-R1",
+    "id": "deepseek-reasoner",
+    "icon": "deepseek",
+    "org": "DeepSeek",
+    "score": {
+      "eed": 37.86,
+      "MECHANICS": 38.72,
+      "ELECTRICITY": 35.10,
+      "THERMODYNAMICS": 41.74,
+      "OPTICS": 38.01,
+      "MODERN": 33.61,
+      "ADVANCED": 46.33
+    }
+  },
+  {
+    "name": "o3-mini (high)",
+    "id": "o3-mini-high",
+    "icon": "openai",
+    "org": "OpenAI",
+    "score": {
+      "eed": 37.26,
+      "MECHANICS": 38.20,
+      "ELECTRICITY": 36.52,
+      "THERMODYNAMICS": 35.35,
+      "OPTICS": 42.35,
+      "MODERN": 32.34,
+      "ADVANCED": 39.93
+    }
+  },
+  {
+    "name": "o1",
+    "id": "o1",
+    "icon": "openai",
+    "org": "OpenAI",
+    "score": {
+      "eed": 27.44,
+      "MECHANICS": 31.58,
+      "ELECTRICITY": 21.44,
+      "THERMODYNAMICS": 32.14,
+      "OPTICS": 24.00,
+      "MODERN": 22.14,
+      "ADVANCED": 25.79
+    }
+  },
+  {
+    "name": "Claude 3.7 Sonnet Thinking",
+    "id": "claude-3.7-sonnet-thinking",
+    "icon": "claude",
+    "org": "Anthropic",
+    "score": {
+      "eed": 27.14,
+      "MECHANICS": 26.96,
+      "ELECTRICITY": 26.59,
+      "THERMODYNAMICS": 27.50,
+      "OPTICS": 32.05,
+      "MODERN": 25.10,
+      "ADVANCED": 24.64
+    }
+  },
+  {
+    "name": "GPT-4.1",
+    "id": "gpt-4.1",
+    "icon": "openai",
+    "org": "OpenAI",
+    "score": {
+      "eed": 23.74,
+      "MECHANICS": 22.67,
+      "ELECTRICITY": 24.77,
+      "THERMODYNAMICS": 19.21,
+      "OPTICS": 28.55,
+      "MODERN": 24.23,
+      "ADVANCED": 31.42
+    }
+  },
+  {
+    "name": "DeepSeek-V3",
+    "id": "deepseek-chat",
+    "icon": "deepseek",
+    "org": "DeepSeek",
+    "score": {
+      "eed": 24.23,
+      "MECHANICS": 23.50,
+      "ELECTRICITY": 27.38,
+      "THERMODYNAMICS": 20.29,
+      "OPTICS": 28.95,
+      "MODERN": 19.93,
+      "ADVANCED": 20.37
+    }
+  },
+  {
+    "name": "Claude 3.7 Sonnet",
+    "id": "claude-3.7-sonnet",
+    "icon": "claude",
+    "org": "Anthropic",
+    "score": {
+      "eed": 23.80,
+      "MECHANICS": 21.46,
+      "ELECTRICITY": 27.22,
+      "THERMODYNAMICS": 22.56,
+      "OPTICS": 26.19,
+      "MODERN": 19.58,
+      "ADVANCED": 31.16
+    }
+  },
+  {
+    "name": "GPT-4o",
+    "id": "gpt-4o",
+    "icon": "openai",
+    "org": "OpenAI",
+    "score": {
+      "eed": 15.39,
+      "MECHANICS": 14.60,
+      "ELECTRICITY": 16.25,
+      "THERMODYNAMICS": 11.57,
+      "OPTICS": 23.32,
+      "MODERN": 14.88,
+      "ADVANCED": 12.42
+    }
+  },
+  {
+    "name": "Qwen2.5-max",
+    "id": "qwen-2.5-max",
+    "icon": "qwen",
+    "org": "Ali",
+    "score": {
+      "eed": 13.94,
+      "MECHANICS": 13.99,
+      "ELECTRICITY": 14.84,
+      "THERMODYNAMICS": 9.51,
+      "OPTICS": 21.33,
+      "MODERN": 11.11,
+      "ADVANCED": 11.24
+    }
+  },
+  {
+    "name": "QwQ-32B",
+    "id": "qwen-qwq-32b",
+    "icon": "qwen",
+    "org": "Ali",
+    "score": {
+      "eed": 4.50,
+      "MECHANICS": 6.60,
+      "ELECTRICITY": 4.55,
+      "THERMODYNAMICS": 3.85,
+      "OPTICS": 0.40,
+      "MODERN": 0.00,
+      "ADVANCED": 3.10
+    }
+  },
+  {
+    "name": "DeepSeek-R1 Distill-Qwen-32B",
+    "id": "deepseek-r1-distill-qwen-32b",
+    "icon": "deepseek",
+    "org": "DeepSeek",
+    "score": {
+      "eed": 3.16,
+      "MECHANICS": 4.17,
+      "ELECTRICITY": 1.91,
+      "THERMODYNAMICS": 2.80,
+      "OPTICS": 2.26,
+      "MODERN": 3.70,
+      "ADVANCED": 3.10
+    }
+  }
+]

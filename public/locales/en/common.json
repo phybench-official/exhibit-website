@@ -14,10 +14,10 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "doc": "Doc",
+    "doc": "Documentation",
     "news": "News",
     "leaderboard": "LeaderBoard"
   },
   "toc": "Table of Content",
-  "viewdoc": "View Doc"
+  "viewdoc": "View Documentation"
 }
