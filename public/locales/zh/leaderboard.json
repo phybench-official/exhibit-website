@@ -1,6 +1,9 @@
 {
   "description": "是一个用于评估大型语言模型物理推理能力的基准测试。",
   "selectField": "选择领域",
+  "selectScoreType": "选择分数类型",
+  "eedScoreTitle": "EED 评分",
+  "accScoreTitle": "准确率评分",
   "chartTitle": "模型性能",
   "chartDescription": "各模型得分",
   "leaderboardTitle": "模型排行榜",
@@ -16,12 +19,12 @@
   "modelId": "模型ID",
   "scoreLabel": "得分",
   "fields": {
-    "eed": "总体得分",
+    "ALL": "总体得分",
     "MECHANICS": "力学",
     "ELECTRICITY": "电磁学",
     "THERMODYNAMICS": "热力学",
     "OPTICS": "光学",
-    "MODERN": "现代物理",
+    "MODERN": "近代物理",
     "ADVANCED": "高等物理"
   }
 }

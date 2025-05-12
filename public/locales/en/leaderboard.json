@@ -1,6 +1,9 @@
 {
   "description": "is a benchmark for evaluating the physical reasoning capabilities of large language models.",
   "selectField": "Select Field",
+  "selectScoreType": "Select Score Type",
+  "eedScoreTitle": "EED Score",
+  "accScoreTitle": "Accuracy Score",
   "chartTitle": "Model Performance",
   "chartDescription": "Comparison of models by score",
   "leaderboardTitle": "Model Leaderboard",
@@ -16,7 +19,7 @@
   "modelId": "Model ID",
   "scoreLabel": "Score",
   "fields": {
-    "eed": "Overall Score",
+    "ALL": "Overall Score",
     "MECHANICS": "Mechanics",
     "ELECTRICITY": "Electricity",
     "THERMODYNAMICS": "Thermodynamics",

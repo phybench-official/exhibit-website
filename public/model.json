@@ -1,17 +1,26 @@
 [
   {
     "name": "Gemini 2.5 pro",
-    "id": "gemini-2.5-pro-preview-03-25",
+    "id": "gemini-2.5-pro",
     "icon": "gemini",
     "org": "Google",
-    "score": {
-      "eed": 49.46,
+    "eed": {
+      "ALL": 49.46,
       "MECHANICS": 50.47,
       "ELECTRICITY": 51.02,
       "THERMODYNAMICS": 49.45,
       "OPTICS": 44.66,
       "MODERN": 44.74,
       "ADVANCED": 50.01
+    },
+    "acc": {
+      "ALL": 36.87,
+      "MECHANICS": 38.71,
+      "ELECTRICITY": 37.27,
+      "THERMODYNAMICS": 37.66,
+      "OPTICS": 31.37,
+      "MODERN": 34.0,
+      "ADVANCED": 31.58
     }
   },
   {
@@ -19,14 +28,47 @@
     "id": "o3-high",
     "icon": "openai",
     "org": "OpenAI",
-    "score": {
-      "eed": 46.37,
+    "eed": {
+      "ALL": 46.37,
       "MECHANICS": 48.22,
       "ELECTRICITY": 46.65,
       "THERMODYNAMICS": 47.45,
       "OPTICS": 41.66,
       "MODERN": 39.85,
       "ADVANCED": 48.27
+    },
+    "acc": {
+      "ALL": 34.78,
+      "MECHANICS": 38.71,
+      "ELECTRICITY": 34.16,
+      "THERMODYNAMICS": 37.66,
+      "OPTICS": 25.49,
+      "MODERN": 26.0,
+      "ADVANCED": 31.58
+    }
+  },
+  {
+    "name": "o4-mini (high)",
+    "id": "o4-mini-high",
+    "icon": "openai",
+    "org": "OpenAI",
+    "eed": {
+      "ALL": 41.94,
+      "MECHANICS": 43.95,
+      "ELECTRICITY": 41.81,
+      "THERMODYNAMICS": 42.24,
+      "OPTICS": 42.08,
+      "MODERN": 29.24,
+      "ADVANCED": 52.02
+    },
+    "acc": {
+      "ALL": 29.39,
+      "MECHANICS": 31.34,
+      "ELECTRICITY": 28.57,
+      "THERMODYNAMICS": 32.47,
+      "OPTICS": 29.41,
+      "MODERN": 16.0,
+      "ADVANCED": 36.84
     }
   },
   {
@@ -34,14 +76,23 @@
     "id": "deepseek-reasoner",
     "icon": "deepseek",
     "org": "DeepSeek",
-    "score": {
-      "eed": 37.86,
+    "eed": {
+      "ALL": 37.86,
       "MECHANICS": 38.72,
       "ELECTRICITY": 35.10,
       "THERMODYNAMICS": 41.74,
       "OPTICS": 38.01,
       "MODERN": 33.61,
       "ADVANCED": 46.33
+    },
+    "acc": {
+      "ALL": 25.04,
+      "MECHANICS": 24.88,
+      "ELECTRICITY": 21.74,
+      "THERMODYNAMICS": 31.17,
+      "OPTICS": 27.45,
+      "MODERN": 24.0,
+      "ADVANCED": 26.32
     }
   },
   {
@@ -49,14 +100,119 @@
     "id": "o3-mini-high",
     "icon": "openai",
     "org": "OpenAI",
-    "score": {
-      "eed": 37.26,
+    "eed": {
+      "ALL": 37.26,
       "MECHANICS": 38.20,
       "ELECTRICITY": 36.52,
       "THERMODYNAMICS": 35.35,
       "OPTICS": 42.35,
       "MODERN": 32.34,
       "ADVANCED": 39.93
+    },
+    "acc": {
+      "ALL": 25.04,
+      "MECHANICS": 25.81,
+      "ELECTRICITY": 22.98,
+      "THERMODYNAMICS": 25.97,
+      "OPTICS": 29.41,
+      "MODERN": 22.0,
+      "ADVANCED": 26.32
+    }
+  },
+  {
+    "name": "o4-mini",
+    "id": "o4-mini",
+    "icon": "openai",
+    "org": "OpenAI",
+    "eed": {
+      "ALL": 36.44,
+      "MECHANICS": 35.45,
+      "ELECTRICITY": 39.03,
+      "THERMODYNAMICS": 38.00,
+      "OPTICS": 34.49,
+      "MODERN": 34.28,
+      "ADVANCED": 30.49
+    },
+    "acc": {
+      "ALL": 24.87,
+      "MECHANICS": 23.5,
+      "ELECTRICITY": 25.47,
+      "THERMODYNAMICS": 28.57,
+      "OPTICS": 25.49,
+      "MODERN": 24.0,
+      "ADVANCED": 21.05
+    }
+  },
+  {
+    "name": "o3-mini",
+    "id": "o3-mini",
+    "icon": "openai",
+    "org": "OpenAI",
+    "eed": {
+      "ALL": 33.26,
+      "MECHANICS": 34.17,
+      "ELECTRICITY": 33.49,
+      "THERMODYNAMICS": 36.49,
+      "OPTICS": 33.95,
+      "MODERN": 25.59,
+      "ADVANCED": 26.32
+    },
+    "acc": {
+      "ALL": 21.25,
+      "MECHANICS": 21.2,
+      "ELECTRICITY": 21.12,
+      "THERMODYNAMICS": 27.63,
+      "OPTICS": 21.57,
+      "MODERN": 14.0,
+      "ADVANCED": 15.79
+    }
+  },
+  {
+    "name": "Grok 3 Beta",
+    "id": "grok-3-beta",
+    "icon": "grok",
+    "org": "xAI",
+    "eed": {
+      "ALL": 32.00,
+      "MECHANICS": 31.37,
+      "ELECTRICITY": 32.72,
+      "THERMODYNAMICS": 31.37,
+      "OPTICS": 34.55,
+      "MODERN": 28.03,
+      "ADVANCED": 39.26
+    },
+    "acc": {
+      "ALL": 21.22,
+      "MECHANICS": 20.74,
+      "ELECTRICITY": 20.5,
+      "THERMODYNAMICS": 23.38,
+      "OPTICS": 23.53,
+      "MODERN": 18.0,
+      "ADVANCED": 26.32
+    }
+  },
+  {
+    "name": "Gemini 2.0 Flash Thinking",
+    "id": "gemini-2-flash-thinking",
+    "icon": "gemini",
+    "org": "Google",
+    "eed": {
+      "ALL": 30.31,
+      "MECHANICS": 31.65,
+      "ELECTRICITY": 30.44,
+      "THERMODYNAMICS": 28.73,
+      "OPTICS": 25.86,
+      "MODERN": 29.85,
+      "ADVANCED": 33.5
+    },
+    "acc": {
+      "ALL": 18.18,
+      "MECHANICS": 19.44,
+      "ELECTRICITY": 18.01,
+      "THERMODYNAMICS": 18.42,
+      "OPTICS": 13.73,
+      "MODERN": 18.0,
+      "ADVANCED": 16.67
     }
   },
   {
@@ -64,14 +220,23 @@
     "id": "o1",
     "icon": "openai",
     "org": "OpenAI",
-    "score": {
-      "eed": 27.44,
+    "eed": {
+      "ALL": 27.44,
       "MECHANICS": 31.58,
       "ELECTRICITY": 21.44,
       "THERMODYNAMICS": 32.14,
       "OPTICS": 24.00,
       "MODERN": 22.14,
       "ADVANCED": 25.79
+    },
+    "acc": {
+      "ALL": 17.97,
+      "MECHANICS": 20.71,
+      "ELECTRICITY": 13.79,
+      "THERMODYNAMICS": 23.91,
+      "OPTICS": 12.90,
+      "MODERN": 14.81,
+      "ADVANCED": 14.29
     }
   },
   {
@@ -79,14 +244,23 @@
     "id": "claude-3.7-sonnet-thinking",
     "icon": "claude",
     "org": "Anthropic",
-    "score": {
-      "eed": 27.14,
+    "eed": {
+      "ALL": 27.14,
       "MECHANICS": 26.96,
       "ELECTRICITY": 26.59,
       "THERMODYNAMICS": 27.50,
       "OPTICS": 32.05,
       "MODERN": 25.10,
       "ADVANCED": 24.64
+    },
+    "acc": {
+      "ALL": 15.3,
+      "MECHANICS": 15.21,
+      "ELECTRICITY": 12.42,
+      "THERMODYNAMICS": 18.18,
+      "OPTICS": 21.57,
+      "MODERN": 16.0,
+      "ADVANCED": 10.53
     }
   },
   {
@@ -94,14 +268,23 @@
     "id": "gpt-4.1",
     "icon": "openai",
     "org": "OpenAI",
-    "score": {
-      "eed": 23.74,
+    "eed": {
+      "ALL": 23.74,
       "MECHANICS": 22.67,
       "ELECTRICITY": 24.77,
       "THERMODYNAMICS": 19.21,
       "OPTICS": 28.55,
       "MODERN": 24.23,
       "ADVANCED": 31.42
+    },
+    "acc": {
+      "ALL": 13.22,
+      "MECHANICS": 12.44,
+      "ELECTRICITY": 12.42,
+      "THERMODYNAMICS": 10.39,
+      "OPTICS": 17.65,
+      "MODERN": 16.0,
+      "ADVANCED": 21.05
     }
   },
   {
@@ -109,14 +292,47 @@
     "id": "deepseek-chat",
     "icon": "deepseek",
     "org": "DeepSeek",
-    "score": {
-      "eed": 24.23,
+    "eed": {
+      "ALL": 24.23,
       "MECHANICS": 23.50,
       "ELECTRICITY": 27.38,
       "THERMODYNAMICS": 20.29,
       "OPTICS": 28.95,
       "MODERN": 19.93,
       "ADVANCED": 20.37
+    },
+    "acc": {
+      "ALL": 13.59,
+      "MECHANICS": 12.44,
+      "ELECTRICITY": 16.15,
+      "THERMODYNAMICS": 11.84,
+      "OPTICS": 17.65,
+      "MODERN": 12.0,
+      "ADVANCED": 5.26
+    }
+  },
+  {
+    "name": "o3-mini (low)",
+    "id": "o3-mini-low",
+    "icon": "openai",
+    "org": "OpenAI",
+    "eed": {
+      "ALL": 25.35,
+      "MECHANICS": 24.55,
+      "ELECTRICITY": 22.30,
+      "THERMODYNAMICS": 27.28,
+      "OPTICS": 29.50,
+      "MODERN": 27.46,
+      "ADVANCED": 32.83
+    },
+    "acc": {
+      "ALL": 13.7,
+      "MECHANICS": 13.67,
+      "ELECTRICITY": 11.49,
+      "THERMODYNAMICS": 17.02,
+      "OPTICS": 13.33,
+      "MODERN": 15.38,
+      "ADVANCED": 14.29
     }
   },
   {
@@ -124,14 +340,23 @@
     "id": "claude-3.7-sonnet",
     "icon": "claude",
     "org": "Anthropic",
-    "score": {
-      "eed": 23.80,
+    "eed": {
+      "ALL": 23.80,
       "MECHANICS": 21.46,
       "ELECTRICITY": 27.22,
       "THERMODYNAMICS": 22.56,
       "OPTICS": 26.19,
       "MODERN": 19.58,
       "ADVANCED": 31.16
+    },
+    "acc": {
+      "ALL": 12.87,
+      "MECHANICS": 9.68,
+      "ELECTRICITY": 16.15,
+      "THERMODYNAMICS": 12.99,
+      "OPTICS": 17.65,
+      "MODERN": 10.0,
+      "ADVANCED": 15.79
     }
   },
   {
@@ -139,14 +364,23 @@
     "id": "gpt-4o",
     "icon": "openai",
     "org": "OpenAI",
-    "score": {
-      "eed": 15.39,
+    "eed": {
+      "ALL": 15.39,
       "MECHANICS": 14.60,
       "ELECTRICITY": 16.25,
       "THERMODYNAMICS": 11.57,
       "OPTICS": 23.32,
       "MODERN": 14.88,
       "ADVANCED": 12.42
+    },
+    "acc": {
+      "ALL": 6.97,
+      "MECHANICS": 5.53,
+      "ELECTRICITY": 7.45,
+      "THERMODYNAMICS": 5.26,
+      "OPTICS": 15.69,
+      "MODERN": 6.0,
+      "ADVANCED": 5.26
     }
   },
   {
@@ -154,14 +388,23 @@
     "id": "qwen-2.5-max",
     "icon": "qwen",
     "org": "Ali",
-    "score": {
-      "eed": 13.94,
+    "eed": {
+      "ALL": 13.94,
       "MECHANICS": 13.99,
       "ELECTRICITY": 14.84,
       "THERMODYNAMICS": 9.51,
       "OPTICS": 21.33,
       "MODERN": 11.11,
       "ADVANCED": 11.24
+    },
+    "acc": {
+      "ALL": 6.09,
+      "MECHANICS": 5.99,
+      "ELECTRICITY": 6.21,
+      "THERMODYNAMICS": 2.6,
+      "OPTICS": 13.73,
+      "MODERN": 6.0,
+      "ADVANCED": 0.0
     }
   },
   {
@@ -169,14 +412,23 @@
     "id": "qwen-qwq-32b",
     "icon": "qwen",
     "org": "Ali",
-    "score": {
-      "eed": 4.50,
+    "eed": {
+      "ALL": 4.50,
       "MECHANICS": 6.60,
       "ELECTRICITY": 4.55,
       "THERMODYNAMICS": 3.85,
       "OPTICS": 0.40,
       "MODERN": 0.00,
       "ADVANCED": 3.10
+    },
+    "acc": {
+      "ALL": 2.6,
+      "MECHANICS": 4.29,
+      "ELECTRICITY": 2.3,
+      "THERMODYNAMICS": 2.13,
+      "OPTICS": 0.0,
+      "MODERN": 0.0,
+      "ADVANCED": 0.0
     }
   },
   {
@@ -184,14 +436,23 @@
     "id": "deepseek-r1-distill-qwen-32b",
     "icon": "deepseek",
     "org": "DeepSeek",
-    "score": {
-      "eed": 3.16,
+    "eed": {
+      "ALL": 3.16,
       "MECHANICS": 4.17,
       "ELECTRICITY": 1.91,
       "THERMODYNAMICS": 2.80,
       "OPTICS": 2.26,
       "MODERN": 3.70,
       "ADVANCED": 3.10
+    },
+    "acc": {
+      "ALL": 1.16,
+      "MECHANICS": 1.43,
+      "ELECTRICITY": 0.0,
+      "THERMODYNAMICS": 2.13,
+      "OPTICS": 0.0,
+      "MODERN": 3.7,
+      "ADVANCED": 0.0
     }
   }
 ]

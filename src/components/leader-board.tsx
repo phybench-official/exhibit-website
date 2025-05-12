@@ -42,10 +42,11 @@ import {
 } from "@/components/ui/chart";
 
 import { LeaderboardIcon } from "./leaderboard/leaderboard-icon";
+import { ShiningText } from "./ui/shining-text";
 
 // 定义模型数据类型
 interface ModelScore {
-  eed: number;
+  ALL: number;
   MECHANICS: number;
   ELECTRICITY: number;
   THERMODYNAMICS: number;
@@ -59,33 +60,44 @@ interface ModelData {
   id: string;
   icon: string;
   org: string;
-  score: ModelScore;
+  eed: ModelScore;
+  acc: ModelScore;
 }
+
+// 定义分数类型
+type ScoreType = "eed" | "acc";
 
 export default function LeaderBoard() {
   const { t } = useTranslation("leaderboard");
   const [models, setModels] = useState<ModelData[]>([]);
-  const [selectedField, setSelectedField] = useState<string>("eed");
+  const [selectedField, setSelectedField] = useState<string>("ALL");
+  const [scoreType, setScoreType] = useState<ScoreType>("eed");
   
   // 获取模型数据
   useEffect(() => {
     fetch("/model.json")
       .then(response => response.json())
       .then(data => {
-        setModels(data.sort((a: ModelData, b: ModelData) => b.score[selectedField as keyof ModelScore] - a.score[selectedField as keyof ModelScore]));
+        setModels(data.sort((a: ModelData, b: ModelData) => 
+          b[scoreType][selectedField as keyof ModelScore] - a[scoreType][selectedField as keyof ModelScore]));
       })
       .catch(error => console.error("Error loading model data:", error));
-  }, [selectedField]);
+  }, [selectedField, scoreType]);
 
   // 字段切换处理
   const handleFieldChange = (value: string) => {
     setSelectedField(value);
   };
 
+  // 分数类型切换处理
+  const handleScoreTypeChange = (value: ScoreType) => {
+    setScoreType(value);
+  };
+
   // 准备图表数据
   const chartData = models.map(model => ({
     name: model.name,
-    score: model.score[selectedField as keyof ModelScore],
+    score: model[scoreType][selectedField as keyof ModelScore],
     fill: model.icon === 'openai' ? "hsl(var(--chart-1))" :
           model.icon === 'gemini' ? "hsl(var(--chart-2))" :
           model.icon === 'claude' ? "hsl(var(--chart-3))" :
@@ -94,9 +106,13 @@ export default function LeaderBoard() {
   }));
 
   const radarConfig = {
-    A: {
-      label: t("performance"),
+    EED: {
+      label: t("performance") + " (EED)",
       color: "hsl(var(--chart-1))",
+    },
+    ACC: {
+      label: t("performance") + " (Accuracy)",
+      color: "hsl(var(--chart-2))",
     }
   } as ChartConfig;
 
@@ -108,26 +124,45 @@ export default function LeaderBoard() {
 
   return (
     <div className="w-full max-w-7xl mx-auto mt-20 mb-8 px-4">
+      {/* 分数类型与字段显示 */}
+      <div className="mb-6 flex flex-col sm:flex-row justify-between items-start gap-4">
+        <ShiningText className="text-xl font-bold">
+          {scoreType === "eed" ? t("eedScoreTitle") : t("accScoreTitle")} - {t(`fields.${selectedField}`)}
+        </ShiningText>
+        {/* <div className="text-xl font-semibold">
+          
+        </div> */}
+        <div className="flex flex-row w-full justify-between lg:justify-center gap-3">
+          {/* 分数类型选择器 */}
+          <Select value={scoreType} onValueChange={handleScoreTypeChange}>
+            <SelectTrigger className="lg:w-[220px]">
+              <SelectValue placeholder={t("selectScoreType")} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="eed">EED Score</SelectItem>
+              <SelectItem value="acc">Accuracy Score</SelectItem>
+            </SelectContent>
+          </Select>
 
-      {/* 字段选择器 */}
-      <div className="mb-3 ml-2">
-        <Select value={selectedField} onValueChange={handleFieldChange}>
-          <SelectTrigger className="w-[280px]">
-            <SelectValue placeholder={t("selectField")} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="eed">{t("fields.eed")}</SelectItem>
-            <SelectItem value="MECHANICS">{t("fields.MECHANICS")}</SelectItem>
-            <SelectItem value="ELECTRICITY">{t("fields.ELECTRICITY")}</SelectItem>
-            <SelectItem value="THERMODYNAMICS">{t("fields.THERMODYNAMICS")}</SelectItem>
-            <SelectItem value="OPTICS">{t("fields.OPTICS")}</SelectItem>
-            <SelectItem value="MODERN">{t("fields.MODERN")}</SelectItem>
-            <SelectItem value="ADVANCED">{t("fields.ADVANCED")}</SelectItem>
-          </SelectContent>
-        </Select>
+          {/* 字段选择器 */}
+          <Select value={selectedField} onValueChange={handleFieldChange}>
+            <SelectTrigger className="lg:w-[280px]">
+              <SelectValue placeholder={t("selectField")} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="ALL">{t("fields.ALL")}</SelectItem>
+              <SelectItem value="MECHANICS">{t("fields.MECHANICS")}</SelectItem>
+              <SelectItem value="ELECTRICITY">{t("fields.ELECTRICITY")}</SelectItem>
+              <SelectItem value="THERMODYNAMICS">{t("fields.THERMODYNAMICS")}</SelectItem>
+              <SelectItem value="OPTICS">{t("fields.OPTICS")}</SelectItem>
+              <SelectItem value="MODERN">{t("fields.MODERN")}</SelectItem>
+              <SelectItem value="ADVANCED">{t("fields.ADVANCED")}</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
 
-      {/* 主要内容 - 响应式布局 */}
+      {/* 排行榜 */}
       <div className="flex flex-col lg:flex-row gap-6">
         {/* 柱状图 */}
         <Card className="w-full lg:w-1/2">
@@ -136,7 +171,7 @@ export default function LeaderBoard() {
             <CardDescription>{t("chartDescription")}</CardDescription>
           </CardHeader>
           <CardContent>
-            <ChartContainer config={chartConfig} className="w-full h-120 lg:h-144">
+            <ChartContainer config={chartConfig} className="w-full h-120 lg:h-168 lg:mt-12">
               <BarChart
                 data={chartData}
                 layout="vertical"
@@ -187,6 +222,7 @@ export default function LeaderBoard() {
               <TableBody>
                 {models.map((model, index) => (
                   <Dialog key={model.id}>
+                    {/* 表格内容 */}
                     <DialogTrigger asChild>
                       <TableRow 
                         className="cursor-pointer hover:bg-muted/50"
@@ -201,15 +237,16 @@ export default function LeaderBoard() {
                           </div>
                         </TableCell>
                         <TableCell>{model.org}</TableCell>
-                        <TableCell className="text-right font-medium">{model.score[selectedField as keyof ModelScore].toFixed(2)}</TableCell>
+                        <TableCell className="text-right font-medium">{model[scoreType][selectedField as keyof ModelScore].toFixed(2)}</TableCell>
                         <TableCell><ChevronRight className="h-4 w-4" /></TableCell>
                       </TableRow>
                     </DialogTrigger>
+                    {/* 模态框内容 */}
                     <DialogContent className="sm:max-w-3xl max-h-[85vh] overflow-y-auto">
                       <DialogHeader>
                         <div className="flex items-center gap-3">
-                          <div className="flex items-center justify-center w-12 h-12">
-                            {LeaderboardIcon(model.icon, 40)}
+                          <div className="flex items-center justify-center w-10 h-12">
+                            {LeaderboardIcon(model.icon, 32)}
                           </div>
                           <DialogTitle className="text-xl">{model.name}</DialogTitle>
                         </div>
@@ -223,12 +260,36 @@ export default function LeaderBoard() {
                             <ChartContainer config={radarConfig} className="h-54 -translate-x-[3rem]">
                               <RadarChart
                                 data={[
-                                  { subject: "MECHANICS", A: model.score.MECHANICS },
-                                  { subject: "ELECTRICITY", A: model.score.ELECTRICITY },
-                                  { subject: "THERMODYNAMICS", A: model.score.THERMODYNAMICS },
-                                  { subject: "OPTICS", A: model.score.OPTICS },
-                                  { subject: "MODERN", A: model.score.MODERN },
-                                  { subject: "ADVANCED", A: model.score.ADVANCED },
+                                  { 
+                                    subject: "MECHANICS", 
+                                    EED: model.eed.MECHANICS,
+                                    ACC: model.acc.MECHANICS
+                                  },
+                                  { 
+                                    subject: "ELECTRICITY", 
+                                    EED: model.eed.ELECTRICITY,
+                                    ACC: model.acc.ELECTRICITY
+                                  },
+                                  { 
+                                    subject: "THERMODYNAMICS", 
+                                    EED: model.eed.THERMODYNAMICS,
+                                    ACC: model.acc.THERMODYNAMICS
+                                  },
+                                  { 
+                                    subject: "OPTICS", 
+                                    EED: model.eed.OPTICS,
+                                    ACC: model.acc.OPTICS
+                                  },
+                                  { 
+                                    subject: "MODERN", 
+                                    EED: model.eed.MODERN,
+                                    ACC: model.acc.MODERN
+                                  },
+                                  { 
+                                    subject: "ADVANCED", 
+                                    EED: model.eed.ADVANCED,
+                                    ACC: model.acc.ADVANCED
+                                  },
                                 ]}
                                 className="mx-auto "
                                 outerRadius={90}
@@ -239,10 +300,20 @@ export default function LeaderBoard() {
                                   tickFormatter={(value) => t(`fields.${value}`)}
                                 />
                                 <Radar
-                                  name={t("performance")}
-                                  dataKey="A"
+                                  name="EED Score"
+                                  dataKey="EED"
                                   fill="hsl(var(--chart-1))"
-                                  fillOpacity={0.6}
+                                  fillOpacity={0.5}
+                                  dot={{
+                                    r: 3,
+                                    fillOpacity: 1,
+                                  }}
+                                />
+                                <Radar
+                                  name="Accuracy Score"
+                                  dataKey="ACC"
+                                  fill="hsl(var(--chart-2))"
+                                  fillOpacity={0.5}
                                   dot={{
                                     r: 3,
                                     fillOpacity: 1,
@@ -255,9 +326,9 @@ export default function LeaderBoard() {
 
                           {/* 详细信息 */}
                           <div className="w-full lg:w-1/2">
-                            <h3 className="text-lg font-semibold mb-3">{t("detailedScores")}</h3>
+                            <h3 className="text-lg font-semibold mb-3">{t("detailedScores")} ({scoreType === "eed" ? "EED" : "Accuracy"})</h3>
                             <div className="space-y-2">
-                              {Object.entries(model.score).map(([key, value]) => (
+                              {Object.entries(model[scoreType]).map(([key, value]) => (
                                 <div key={key} className="flex justify-between text-sm lg:text-base items-center border-b border-muted pb-1">
                                   <span>{t(`fields.${key}`)}</span>
                                   <span className="font-medium">{value.toFixed(2)}</span>
@@ -288,8 +359,6 @@ export default function LeaderBoard() {
             </Table>
           </CardContent>
         </Card>
-        
-        {/* 移除原有的独立模态框 */}
       </div>
     </div>
   );
