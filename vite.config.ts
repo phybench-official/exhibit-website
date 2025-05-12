@@ -2,12 +2,25 @@ import path from "path"
 import tailwindcss from "@tailwindcss/vite"
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
+import { createHtmlPlugin } from 'vite-plugin-html'
+
+// 生成版本号
+const version = new Date().getTime();
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    tailwindcss()
+    tailwindcss(),
+    createHtmlPlugin({
+      minify: true,
+      inject: {
+        data: {
+          buildTime: new Date().toISOString(),
+          version
+        }
+      }
+    })
   ],
   resolve: {
     alias: {
@@ -19,10 +32,10 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          // 将 React 核心库单独放在一个 chunk 中
+          // react-core
           'react-core': ['react', 'react-dom'],
           
-          // Ant Design核心
+          // Ant Design
           'antd': [
             'antd', 
             '@ant-design/icons',
@@ -42,7 +55,8 @@ export default defineConfig({
           ],
           
           // Three.js 相关库单独打包
-          'three': ['three', '@react-three/drei', '@react-three/fiber'],
+          'three': ['three'],
+          'r3f': ['@react-three/drei', '@react-three/fiber'],
           
           // UI 组件库单独打包
           'ui-components': [
@@ -56,25 +70,25 @@ export default defineConfig({
             '@radix-ui/react-id'
           ],
           
-          // 动画相关库单独打包
+          // 动画
           'animations': ['gsap', '@gsap/react', 'framer-motion', 'motion', 'embla-carousel-react', 'lenis'],
           
-          // React 扩展库单独打包
+          // React 扩展库
           'react-extensions': ['react-router-dom', 'react-syntax-highlighter', 'react-i18next'],
           
-          // 国际化相关库单独打包
+          // i18n
           'i18n': ['i18next', 'i18next-browser-languagedetector', 'i18next-http-backend'],
           
-          // D3相关库单独打包
+          // D3
           'd3-libs': ['d3', 'd3-array', 'd3-shape', 'd3-scale'],
           
           // 数据可视化库
           'visualization': ['recharts', 'cytoscape', 'cytoscape-cose-bilkent', 'cytoscape-fcose']
         },
-        // 优化输出格式，使文件名更加清晰
-        entryFileNames: 'assets/[name].[hash].js',
-        chunkFileNames: 'assets/[name].[hash].js',
-        assetFileNames: 'assets/[name].[hash].[ext]'
+        // 输出文件名
+        entryFileNames: `assets/[name].${version}.[hash].js`,
+        chunkFileNames: `assets/[name].${version}.[hash].js`,
+        assetFileNames: `assets/[name].${version}.[hash].[ext]`
       },
     },
   },

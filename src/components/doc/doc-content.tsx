@@ -66,10 +66,10 @@ export function DocContent() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {author.name}
+                  {t(`author.${author.name}`)}
                 </a>
               ) : (
-                <span>{author.name}</span>
+                <span>{t(`author.${author.name}`)}</span>
               )}
               <sup className="ml-0.5">{author.affiliation}</sup>
               {index < authors.length - 1 && <span className="ml-1">,</span>}
@@ -79,11 +79,11 @@ export function DocContent() {
         
         {/* 机构信息部分 */}
         <div className="mt-12 text-lg flex flex-col items-center space-y-1">
-          <div className="flex items-baseline"><sup className="mr-1">1</sup><span>School of Physics, Peking University</span></div>
-          <div className="flex items-baseline"><sup className="mr-1">2</sup><span>Institute for Artificial Intelligence, Peking University</span></div>
-          <div className="flex items-baseline"><sup className="mr-1">3</sup><span>Beijing Computational Science Research Center</span></div>
-          <div className="flex items-baseline"><sup className="mr-1">4</sup><span>School of Integrated Circuits, Peking University</span></div>
-          <div className="flex items-baseline"><sup className="mr-1">5</sup><span>Yuanpei College, Peking University</span></div>
+          <div className="flex items-baseline"><sup className="mr-1">1</sup><span>{t("org.phy")}</span></div>
+          <div className="flex items-baseline"><sup className="mr-1">2</sup><span>{t("org.ai")}</span></div>
+          <div className="flex items-baseline"><sup className="mr-1">3</sup><span>{t("org.CSRC")}</span></div>
+          <div className="flex items-baseline"><sup className="mr-1">4</sup><span>{t("org.ic")}</span></div>
+          <div className="flex items-baseline"><sup className="mr-1">5</sup><span>{t("org.yp")}</span></div>
         </div>
 
         <HeroLink />

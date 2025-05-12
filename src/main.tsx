@@ -17,6 +17,7 @@ import gsap from 'gsap'
 const ParticleRing = lazy(() => import('./components/particle-ring.tsx'))
 const LeaderBoard = lazy(() => import('./components/leader-board.tsx'))
 const MainDoc = lazy(() => import('./components/main-doc.tsx'))
+const MainNews = lazy(() => import('./components/main-news.tsx'))
 
 function LenisWrapper() {
   const lenisRef = useRef<LenisRef>(null)
@@ -48,7 +49,7 @@ function LenisWrapper() {
         <Routes>
           <Route path=':lang?' element={<RootLayout/>}>
             <Route index element={<ParticleRing />} />
-            <Route path='news' element={< br/>} />
+            <Route path='news' element={<MainNews />} />
             <Route path='doc' element={<MainDoc />} />
             <Route path='leaderboard' element={<LeaderBoard />} />
           </Route>

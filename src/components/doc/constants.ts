@@ -47,6 +47,7 @@ export const authors = [
   { name: "Bohan Zhang", url: "", affiliation: 5 },
   { name: "Fan Cui", url: "", affiliation: 4 },
   { name: "Changkun Shao", url: "", affiliation: 1 },
+  { name: "Jiaming Ji", url: "", affiliation: 2 },
   { name: "Qing-Hong Cao", url: "https://faculty.pku.edu.cn/caoqinghong/zh_CN/index.htm", affiliation: 1 },
   { name: "Ming-Xing Luo", url: "https://www.csrc.ac.cn/en/people/faculty/184.html", affiliation: 3 },
   { name: "Muhan Zhang", url: "https://muhanzhang.github.io", affiliation: 2 },

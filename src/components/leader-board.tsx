@@ -129,10 +129,8 @@ export default function LeaderBoard() {
         <ShiningText className="text-xl font-bold">
           {scoreType === "eed" ? t("eedScoreTitle") : t("accScoreTitle")} - {t(`fields.${selectedField}`)}
         </ShiningText>
-        {/* <div className="text-xl font-semibold">
-          
-        </div> */}
-        <div className="flex flex-row w-full justify-between lg:justify-center gap-3">
+
+        <div className="flex flex-row w-full lg:w-1/2 justify-between lg:justify-center gap-3">
           {/* 分数类型选择器 */}
           <Select value={scoreType} onValueChange={handleScoreTypeChange}>
             <SelectTrigger className="lg:w-[220px]">
