@@ -1,3 +1,11 @@
 {
-  "news": "新闻"
+  "news": "新闻",
+  "post": {
+    "alphaxiv1": "LLM 在物理推理方面遇到困难 \n\n PHYBench 是一个具有 500 个真实物理问题的新基准测试。 \n\n  📉  即使是顶级模型也达不到人类的准确性  📊  强调真正物理推理的挑战 \n\n alphaXiv  📈 上的趋势 #1",
+    "alphaxiv2": " 🚨 不要错过这个影响深远的 AI 和强化学习周，其中包括贪婪代理、测试时 RL 和 LLM 物理推理 🚀 的强大新基准 \n\n 查看本周 👇 排名前 10 的论文 \n\n - TTRL：测试时强化学习\n - PHYBench：大型语言模型中物理感知和推理的整体评估\n - LLM 是贪婪的代理：RL 微调对决策能力的影响\n - 描述任何内容：详细的本地化图像和视频字幕\n - 强化学习是否真的激励了 LLM 中超出基本模型的推理能力？\n - EasyEdit2：用于编辑大型语言模型的易于使用的转向框架\n - 星球如大脑：迈向基于 AIOS 服务器的 Internet of AgentSites\n - Tina：通过 LoRA 的微小推理模型\n - 在非政策指导下学习推理\n - 通过联合图像特征合成促进生成图像建模",
+    "releasepaper": "🤔 大语言模型真的懂物理吗？ \n 🌍 PHYBench 来了！✨ \n\n 我们团队非常激动地宣布，我们的论文《PHYBench: Holistic Evaluation of Physical Perception and Reasoning in Large Language Models》已于2025年4月22日在arXiv上线啦！🚀 \n\n 我们构建了一个全面的基准测试，来评估LLM的物理感知和推理能力。\n 📊 想知道目前大模型在物理世界理解上的表现如何？ \n 👇 点击阅读全文：",
+    "hfrank": "🥳 重磅！爆炸激动！ 🎉 \n\n 我们的数据集成功冲上 Hugging Face Datasets 趋势榜第三名！🥉✨ 就在2025年5月1日！ 这太不可思议了！🚀 \n\n 万分感谢全球社区的所有朋友们！🙏🙏 你们的关注、star和使用，让我们的工作获得如此高的认可！🤗 \n\n 还没体验过？👇 快来 Hugging Face 探索我们的数据集吧！一起加速AI研究！"
+  },
+  "hide": "收起更多",
+  "show": "显示更多"
 }

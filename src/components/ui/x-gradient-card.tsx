@@ -1,6 +1,7 @@
 import { VerifiedIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import React from "react";
+import { getIcon } from "../news/constants";
 
 interface ReplyProps {
   authorName: string;
@@ -18,6 +19,8 @@ interface XCardProps {
   isVerified?: boolean;
   timestamp: string;
   reply?: ReplyProps;
+  icon?: string;
+  iconlink?: string;
 }
 
 function XCard({
@@ -32,18 +35,20 @@ function XCard({
   ),
   isVerified = true,
   timestamp = "Jan 18, 2025",
-  reply
+  reply,
+  icon = "twitter",
+  iconlink = "",
 }: XCardProps) {
   return (
     <div
       className={cn(
-        "w-full md:min-w-[500px] max-w-xl p-1.5 rounded-2xl relative isolate overflow-hidden",
+        "w-full md:min-w-[500px] max-w-2xl p-1.5 rounded-2xl relative isolate overflow-hidden",
         "bg-white/5 dark:bg-black/90",
         "bg-gradient-to-br from-black/5 to-black/[0.02] dark:from-white/5 dark:to-white/[0.02]",
         "backdrop-blur-xl backdrop-saturate-[180%]",
         "border border-black/10 dark:border-white/10",
         "shadow-[0_8px_16px_rgb(0_0_0_/_0.15)] dark:shadow-[0_8px_16px_rgb(0_0_0_/_0.25)]",
-        "will-change-transform translate-z-0",
+        "will-change-transform translate-z-0 transition-all duration-300",
       )}
     >
       <div
@@ -85,25 +90,17 @@ function XCard({
                   @{authorHandle}
                 </span>
               </div>
-              <button
-                type="button"
+              <div
                 className="h-8 w-8 text-black dark:text-white/80 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 rounded-lg p-1 flex items-center justify-center"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="1200"
-                  height="1227"
-                  fill="none"
-                  viewBox="0 0 1200 1227"
-                  className="w-4 h-4"
-                >
-                  <title>X</title>
-                  <path
-                    fill="currentColor"
-                    d="M714.163 519.284 1160.89 0h-105.86L667.137 450.887 357.328 0H0l468.492 681.821L0 1226.37h105.866l409.625-476.152 327.181 476.152H1200L714.137 519.284h.026ZM569.165 687.828l-47.468-67.894-377.686-540.24h162.604l304.797 435.991 47.468 67.894 396.2 566.721H892.476L569.165 687.854v-.026Z"
-                  />
-                </svg>
-              </button>
+                {iconlink ? (
+                  <a href={iconlink} target="_blank" rel="noopener noreferrer">
+                    {getIcon({ icon })}
+                  </a>
+                ) : (
+                  <span>{getIcon({ icon })}</span>
+                )}
+              </div>
             </div>
           </div>
         </div>

@@ -1,61 +1,180 @@
 import { Timeline } from "@/components/ui/timeline";
 import { XCard } from "@/components/ui/x-gradient-card";
 import { MomentCard } from "./moment-card";
-
-const machineheart = {
-  authorName: "机器之心",
-  authorHandle: "机器之心",
-  authorImage:
-    "https://s2.loli.net/2025/05/12/Y78auvHQBt6xVq9.png",
-  content: (
-    <>
-      <p>发布了新公众号文章：</p>
-      <MomentCard
-        link="https://mp.weixin.qq.com/s/IghOxL81N0AnP2UOIjTCZA"
-        title="北大物院200人合作，金牌得主超50人！PHYBench：大模型究竟能不能真的懂物理？"
-        viewCount="22k"
-        likeCount="300+"
-      />
-    </>
-  ),
-  isVerified: true,
-  timestamp: "April 28, 2025",
-  reply: {
-    authorName: "PHYBench",
-    authorImage:
-      "https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg",
-    content: "Awesome.",
-    isVerified: true,
-    timestamp: "May 1",
-  },
-};
-
-const newzhiyuan = {
-  authorName: "新智元",
-  authorHandle: "新智元",
-  authorImage:
-    "https://s2.loli.net/2025/05/12/qDIFeHP2si1TaZW.png",
-  content: (
-    <>
-      <p>发布了新公众号文章：</p>
-      <MomentCard
-        link="https://mp.weixin.qq.com/s/yAbEp0sThS6Dpay0gTlhNQ"
-        title="北大出手，物理学院天才们教AI「做人」！PHYBench成大模型物理能力试金石"
-        viewCount="6k"
-        likeCount="100+"
-      />
-    </>
-  ),
-  isVerified: true,
-  timestamp: "May 1, 2025",
-}
+import { useTranslation } from "react-i18next";
+import { EllipsisText } from "./ellipsis-text";
+import Zmage from "../ui/zoom-image"; 
 
 export function TimelineUI() {
+
+  const { t } = useTranslation("news");
+
+  const releasepaper = {
+    authorName: "PHYBench",
+    authorHandle: "phybench-official",
+    icon: "arxiv",
+    iconlink: "https://arxiv.org/abs/2504.16074",
+    authorImage:
+      "https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg",
+    content: (
+      <>
+        <EllipsisText 
+          text={t("post.releasepaper")}
+          className=" whitespace-pre-line mb-4"
+        />
+        <a 
+          href="https://arxiv.org/abs/2504.16074"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sky-800 dark:text-sky-200 hover:text-blue-700 dark:hover:text-blue-300 font-semibold transition-colors ">
+          https://arxiv.org/abs/2504.16074
+        </a>
+        <Zmage
+          src="https://s2.loli.net/2025/05/13/QilrptAXTNo4uhY.png"
+          alt="phybench on arxiv"
+          className="mt-4 rounded-lg"
+        />
+      </>
+    ),
+    isVerified: true,
+    timestamp: "Apr 22, 2025",
+  }
+
+  const machineheart = {
+    authorName: "机器之心",
+    authorHandle: "机器之心",
+    icon: "wechat",
+    iconlink: "https://mp.weixin.qq.com/s/IghOxL81N0AnP2UOIjTCZA",
+    authorImage:
+      "https://s2.loli.net/2025/05/12/Y78auvHQBt6xVq9.png",
+    content: (
+      <>
+        <p>发布了新公众号文章：</p>
+        <MomentCard
+          link="https://mp.weixin.qq.com/s/IghOxL81N0AnP2UOIjTCZA"
+          title="北大物院200人合作，金牌得主超50人！PHYBench：大模型究竟能不能真的懂物理？"
+          viewCount="22k"
+          likeCount="300+"
+        />
+      </>
+    ),
+    isVerified: true,
+    timestamp: "Apr 28, 2025",
+    reply: {
+      authorName: "PHYBench",
+      authorImage:
+        "https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg",
+      content: "Awesome.",
+      isVerified: true,
+      timestamp: "May 1",
+    },
+  };
+
+  const newzhiyuan = {
+    authorName: "新智元",
+    authorHandle: "新智元",
+    icon: "wechat",
+    iconlink: "https://mp.weixin.qq.com/s/yAbEp0sThS6Dpay0gTlhNQ",
+    authorImage:
+      "https://s2.loli.net/2025/05/12/qDIFeHP2si1TaZW.png",
+    content: (
+      <>
+        <p>发布了新公众号文章：</p>
+        <MomentCard
+          link="https://mp.weixin.qq.com/s/yAbEp0sThS6Dpay0gTlhNQ"
+          title="北大出手，物理学院天才们教AI「做人」！PHYBench成大模型物理能力试金石"
+          viewCount="6k"
+          likeCount="100+"
+        />
+      </>
+    ),
+    isVerified: true,
+    timestamp: "May 1, 2025",
+  }
+
+  const hfrank = {
+    authorName: "PHYBench",
+    authorHandle: "phybench-official",
+    icon: "huggingface",
+    iconlink: "https://huggingface.co/datasets/Eureka-Lab/PHYBench",
+    authorImage:
+      "https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg",
+    content: (
+      <>
+        <EllipsisText 
+          text={t("post.hfrank")}
+          className=" whitespace-pre-line mb-4"
+        />
+        <a 
+          href="https://huggingface.co/datasets/Eureka-Lab/PHYBench"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sky-800 dark:text-sky-200 hover:text-blue-700 dark:hover:text-blue-300 font-semibold transition-colors ">
+          https://huggingface.co/datasets/Eureka-Lab/PHYBench
+        </a>
+        <Zmage
+          src="https://s2.loli.net/2025/05/13/pd9wUzfIvYb6Ve4.jpg"
+          alt="phybench on alphaxiv"
+          className="mt-4 rounded-lg"
+        />
+      </>
+    ),
+    isVerified: true,
+    timestamp: "May 1, 2025",
+  }
+
+  const alphaxiv1 = {
+    authorName: "alphaXiv",
+    authorHandle: "askalphaxiv",
+    authorImage:
+      "https://s2.loli.net/2025/05/12/76N4vCnVw5rYLkf.png",
+    iconlink: "https://x.com/askalphaxiv/status/1915414425533907021",
+    content: (
+      <>
+        <EllipsisText 
+          text={t("post.alphaxiv1")}
+          className=" whitespace-pre-line"
+        />
+        <Zmage
+          src="https://s2.loli.net/2025/05/12/wdYoDfuUvkPJNzQ.png"
+          alt="phybench on alphaxiv"
+          className="mt-4 rounded-lg"
+        />
+      </>
+    ),
+    isVerified: true,
+    timestamp: "Apr 24, 2025",
+  }
+
+  const alphaxiv2 = {
+    authorName: "alphaXiv",
+    authorHandle: "askalphaxiv",
+    authorImage:
+      "https://s2.loli.net/2025/05/12/76N4vCnVw5rYLkf.png",
+    iconlink: "https://x.com/askalphaxiv/status/1916168237231837190",
+    content: (
+      <>
+        <EllipsisText 
+          text={t("post.alphaxiv2")}
+          className=" whitespace-pre-line"
+        />
+        <Zmage
+          src="https://s2.loli.net/2025/05/12/VtZnYDGzIMcWToA.png"
+          alt="phybench on alphaxiv"
+          className="mt-4 rounded-lg"
+        />
+      </>
+    ),
+    isVerified: true,
+    timestamp: "Apr 27, 2025",
+  }
+
   const data = [
     {
       title: "2025-05-01",
       content: (
         <>
+          <XCard {...hfrank} />
           <XCard {...newzhiyuan} />
         </>
       ),
@@ -65,146 +184,16 @@ export function TimelineUI() {
       content: <XCard {...machineheart} />,
     },
     {
-      title: "2024",
-      content: (
-        <div>
-          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-            Built and launched Aceternity UI and Aceternity UI Pro from scratch
-          </p>
-          <div className="grid grid-cols-2 gap-4">
-            <img
-              src="https://assets.aceternity.com/templates/startup-1.webp"
-              alt="startup template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <img
-              src="https://assets.aceternity.com/templates/startup-2.webp"
-              alt="startup template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <img
-              src="https://assets.aceternity.com/templates/startup-3.webp"
-              alt="startup template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <img
-              src="https://assets.aceternity.com/templates/startup-4.webp"
-              alt="startup template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-          </div>
-        </div>
-      ),
+      title: "2025-04-27",
+      content: <XCard {...alphaxiv2} />
     },
     {
-      title: "Early 2023",
-      content: (
-        <div>
-          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-            I usually run out of copy, but when I see content this big, I try to
-            integrate lorem ipsum.
-          </p>
-          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-            Lorem ipsum is for people who are too lazy to write copy. But we are
-            not. Here are some more example of beautiful designs I built.
-          </p>
-          <div className="grid grid-cols-2 gap-4">
-            <img
-              src="https://assets.aceternity.com/pro/hero-sections.png"
-              alt="hero template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <img
-              src="https://assets.aceternity.com/features-section.png"
-              alt="feature template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <img
-              src="https://assets.aceternity.com/pro/bento-grids.png"
-              alt="bento template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <img
-              src="https://assets.aceternity.com/cards.png"
-              alt="cards template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-          </div>
-        </div>
-      ),
+      title: "2025-04-24",
+      content: <XCard {...alphaxiv1} />
     },
     {
-      title: "Changelog",
-      content: (
-        <div>
-          <p className="mb-4 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-            Deployed 5 new components on Aceternity today
-          </p>
-          <div className="mb-8">
-            <div className="flex items-center gap-2 text-xs text-neutral-700 md:text-sm dark:text-neutral-300">
-              ✅ Card grid component
-            </div>
-            <div className="flex items-center gap-2 text-xs text-neutral-700 md:text-sm dark:text-neutral-300">
-              ✅ Startup template Aceternity
-            </div>
-            <div className="flex items-center gap-2 text-xs text-neutral-700 md:text-sm dark:text-neutral-300">
-              ✅ Random file upload lol
-            </div>
-            <div className="flex items-center gap-2 text-xs text-neutral-700 md:text-sm dark:text-neutral-300">
-              ✅ Himesh Reshammiya Music CD
-            </div>
-            <div className="flex items-center gap-2 text-xs text-neutral-700 md:text-sm dark:text-neutral-300">
-              ✅ Salman Bhai Fan Club registrations open
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <img
-              src="https://assets.aceternity.com/pro/hero-sections.png"
-              alt="hero template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <img
-              src="https://assets.aceternity.com/features-section.png"
-              alt="feature template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <img
-              src="https://assets.aceternity.com/pro/bento-grids.png"
-              alt="bento template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <img
-              src="https://assets.aceternity.com/cards.png"
-              alt="cards template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-          </div>
-        </div>
-      ),
+      title: "2025-04-22",
+      content: <XCard {...releasepaper} />
     },
   ];
   return (

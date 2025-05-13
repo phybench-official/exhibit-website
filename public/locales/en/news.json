@@ -1,3 +1,11 @@
 {
-  "news": "News"
+  "news": "News",
+  "post": {
+    "alphaxiv1": "LLMs struggle with physical reasoning \n\n PHYBench is a new benchmark with 500 real-world physics problems. \n\n 📉 Even top models fall short of human accuracy 📊 Highlights the challenge of true physical reasoning \n\n Trending #1 on alphaXiv 📈",
+    "alphaxiv2": "🚨Don’t miss out on this high-impact week for AI and reinforcement learning, featuring greedy agents, test-time RL, and a powerful new benchmark for LLM physical reasoning 🚀 \n\n Check out the top 10 papers for the week👇 \n\n - TTRL: Test-Time Reinforcement Learning\n - PHYBench: Holistic Evaluation of Physical Perception and Reasoning in Large Language Models\n - LLMs are Greedy Agents: Effects of RL Fine-tuning on Decision-Making Abilities\n - Describe Anything: Detailed Localized Image and Video Captioning\n - Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?\n - EasyEdit2: An Easy-to-use Steering Framework for Editing Large Language Models\n - Planet as a Brain: Towards Internet of AgentSites based on AIOS Server\n - Tina: Tiny Reasoning Models via LoRA \n- Learning to Reason under Off-Policy Guidance\n - Boosting Generative Image Modeling via Joint Image-Feature Synthesis",
+    "releasepaper": "🤔 Can Large Language Models truly grasp physics? \n 🌍 Introducing PHYBench! ✨ \n\n The PHYBench team is thrilled to announce our paper \"PHYBench: Holistic Evaluation of Physical Perception and Reasoning in Large Language Models\" went LIVE on arXiv on April 22, 2025! 🚀 \n\n  We've built a comprehensive benchmark to evaluate LLMs' physical perception and reasoning capabilities. \n 📊 Curious how current models fare in understanding the physical world? \n 👇 Read the full paper here:",
+    "hfrank": "🥳 HUGE NEWS! Absolutely THRILLED! 🎉 \n\n Our dataset has successfully climbed to the #️⃣🥉 spot (Third Place!) on the Hugging Face Datasets Trending list! ✨ Exactly on May 1, 2025! This is incredible! 🚀 \n\n A massive THANKS to the entire global community! 🙏 Your attention, stars, and usage have given our work such amazing recognition! 🤗 \n\n  Haven't checked it out yet? 👇 Explore our dataset on Hugging Face now and let's accelerate AI research together!"
+  },
+  "hide": "Hide More",
+  "show": "Show More"
 }
