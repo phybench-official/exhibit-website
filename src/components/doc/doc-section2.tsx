@@ -2,6 +2,7 @@ import Citation from "./citation"
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { useTheme } from "../theme-provider"
 import { materialLight, materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { MathJax } from "better-react-mathjax"
 
 const InlineCode = ({ children }: { children: string }) => {
 
@@ -56,7 +57,7 @@ export default function DocSection2() {
               <li>
                 Strict requirements:
                 <ul className="list-disc pl-5 mt-2">
-                  <li>✅ Single unambiguous symbolic answer (e.g., \( T=2mg+4mv_0^2/l \))</li>
+                  <li>✅ Single unambiguous symbolic answer (e.g., <MathJax inline>{"$T=2mg+4mv_0^2/l$"}</MathJax>)</li>
                   <li>✉️ Text-only solvability (no diagrams/multimodal inputs)</li>
                   <li>Rigorously precise statements to avoid ambiguity</li>
                   <li>Solvable using only basic physics principles (no complex specialized knowledge required)</li>
@@ -105,11 +106,11 @@ export default function DocSection2() {
               <li><strong>Equivalence Check</strong>: If the simplified expressions of <InlineCode>gt</InlineCode> and <InlineCode>gen</InlineCode> are identical, the EED Score is assigned a perfect score of 100, indicating complete correctness.</li>
               <li><strong>Tree Conversion and Edit Distance Calculation</strong>: If the expressions are not identical, they are converted into tree structures. The edit distance between these trees is then calculated using an extended version of the Zhang-Shasha algorithm. This distance represents the minimum number of node-level operations (insertions, deletions, and updates) required to transform one tree into the other.</li>
               <li>
-                <strong>Relative Edit Distance and Scoring</strong>: The relative edit distance \( r \) is computed as the ratio of the edit distance to the size of the ground truth tree. The EED Score is then determined based on this relative distance:
+                <strong>Relative Edit Distance and Scoring</strong>: The relative edit distance <MathJax inline>{"$r$"}</MathJax> is computed as the ratio of the edit distance to the size of the ground truth tree. The EED Score is then determined based on this relative distance:
                 <ul className="list-disc pl-5 mt-2">
-                  <li>If \( r = 0 \) (i.e., the expressions are identical), the score is 100.</li>
-                  <li>If {String.raw`\( 0 < r < 0.6 \)`}, the score is calculated as {String.raw`\( 60 - 100r \)`}.</li>
-                  <li>If \( r \geq 0.6 \), the score is 0, indicating a significant discrepancy between the model-generated answer and the ground truth.</li>
+                  <li>If <MathJax inline>{"$r=0$"}</MathJax> (i.e., the expressions are identical), the score is 100.</li>
+                  <li>If <MathJax inline>{"$0<r<0.6$"}</MathJax>, the score is calculated as <MathJax inline>{"$60-100r$"}</MathJax>.</li>
+                  <li>If <MathJax inline>{"$r≥0.6$"}</MathJax>, the score is 0, indicating a significant discrepancy between the model-generated answer and the ground truth.</li>
                 </ul>
               </li>
             </ol>
