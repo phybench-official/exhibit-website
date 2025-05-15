@@ -10,7 +10,7 @@ const InlineCode = ({ children }: { children: string }) => {
   const isDark = theme === 'dark' || theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches
   const style = isDark ? materialDark : materialLight;
   return (
-    <SyntaxHighlighter 
+    <SyntaxHighlighter
       style={style}
       customStyle={{
         display: 'inline',
@@ -57,9 +57,9 @@ export default function DocSection2() {
               <li>
                 Strict requirements:
                 <ul className="list-disc pl-5 mt-2">
-                  <li>✅ Single unambiguous symbolic answer (e.g., <MathJax inline>{"$T=2mg+4mv_0^2/l$"}</MathJax>)</li>
-                  <li>✉️ Text-only solvability (no diagrams/multimodal inputs)</li>
-                  <li>Rigorously precise statements to avoid ambiguity</li>
+                  <li>Single unambiguous symbolic answer (e.g., <MathJax inline>{"$T=2mg+4mv_0^2/l$"}</MathJax>)</li>
+                  <li>Text-only solvability (no diagrams/multimodal inputs)</li>
+                  <li>Precise problem statements to avoid ambiguity</li>
                   <li>Solvable using only basic physics principles (no complex specialized knowledge required)</li>
                 </ul>
               </li>
@@ -156,20 +156,7 @@ export default function DocSection2() {
             <ol className="list-decimal pl-5 space-y-2 mb-6">
               <li><strong>Significant Performance Gap</strong>: Even state-of-the-art LLMs significantly lag behind human experts in physical reasoning. The highest-performing model, Gemini 2.5 Pro, achieved only a 36.9% accuracy, compared to the human baseline of 61.9%.</li>
               <li><strong>EED Score Advantages</strong>: The EED Score provides a more nuanced evaluation of model performance compared to traditional binary scoring methods.</li>
-              <li><strong>Domain-Specific Strengths</strong>: Different models exhibit varying strengths in different domains of physics:</li>
             </ol>
-            <div className="mb-6">
-              <img src="/images/fig4-a.png" alt="Domain Performance" className="w-full rounded-lg shadow-md" />
-            </div>
-            <ul className="list-disc pl-5 space-y-2 mb-6">
-              <li>Gemini 2.5 Pro shows strong performance across most domains</li>
-              <li>DeepSeek-R1 and o3-mini (high) show comparable performance in mechanics and electricity</li>
-              <li>Most models struggle with advanced physics and modern physics</li>
-            </ul>
-            <p className="mb-4"><strong>Difficulty Handling</strong>: Comparing the advantage across problem difficulties, Gemini 2.5 Pro gains a pronounced edge on harder problems, followed by o3 (high).</p>
-            <div className="mb-6 w-full">
-              <img src="/images/fig4-b.png" alt="Difficulty Performance" className="w-2/3 rounded-lg shadow-md mx-auto" />
-            </div>
           </div>
         </div>
       </section>
@@ -194,7 +181,7 @@ export default function DocSection2() {
         </div>
       </section>
 
-      <Citation />  
+      <Citation />
     </>
   )
 }
