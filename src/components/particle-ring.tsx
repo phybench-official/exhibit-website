@@ -7,6 +7,9 @@ import { Group, Vector3, DoubleSide } from "three";
 import { FilmPass, WaterPass, UnrealBloomPass, LUTPass } from 'three-stdlib';
 import { MainHero } from "./main-hero";
 import gsap from "gsap";
+import { Toaster } from "@/components/ui/sonner"
+import { toast } from "sonner"
+import { Settings } from "lucide-react"
 
 // 扩展Three.js对象到R3F
 extend({ WaterPass, UnrealBloomPass, FilmPass, LUTPass });
@@ -77,6 +80,11 @@ const GalaxyBackground = () => {
 
 const ParticleRing = () => {
   const [showScene, setShowScene] = useState(false);
+  const [lowPerformanceMode, setLowPerformanceMode] = useState(() => {
+    // 从localStorage读取性能模式设置
+    const savedMode = localStorage.getItem('phybench-low-performance-mode');
+    return savedMode === 'true';
+  });
   
   useEffect(() => {
     // 初始仅显示 PHYBench 文字，背景场景隐藏
@@ -86,10 +94,46 @@ const ParticleRing = () => {
     
     document.addEventListener('startBackgroundAnimation', handleStartAnimation);
     
+    // 只在第一次访问时显示性能提示toast
+    const hasVisited = localStorage.getItem('phybench-visited');
+    if (!hasVisited) {
+      setTimeout(() => {
+        toast("欢迎使用PHYBench", {
+          description: "如果动画效果卡顿，可以切换到低性能模式",
+          action: {
+            label: "切换低性能模式",
+            onClick: () => {
+              togglePerformanceMode(true);
+            },
+          },
+        });
+      }, 3000); // 延迟3秒显示toast
+      
+      // 标记用户已访问
+      localStorage.setItem('phybench-visited', 'true');
+    }
+    
+    // 初始化时也要存储默认性能模式设置
+    if (!localStorage.getItem('phybench-low-performance-mode')) {
+      localStorage.setItem('phybench-low-performance-mode', String(lowPerformanceMode));
+    }
+    
     return () => {
       document.removeEventListener('startBackgroundAnimation', handleStartAnimation);
     };
-  }, []);
+  }, [lowPerformanceMode]);
+  
+  // 切换性能模式的函数
+  const togglePerformanceMode = (newMode?: boolean) => {
+    // 如果传入具体值就使用，否则切换当前值
+    const updatedMode = newMode !== undefined ? newMode : !lowPerformanceMode;
+    setLowPerformanceMode(updatedMode);
+    localStorage.setItem('phybench-low-performance-mode', String(updatedMode));
+    
+    toast(updatedMode ? "已切换到低性能模式" : "已切换到高性能模式", {
+      description: updatedMode ? "减少了动画效果以提高性能" : "启用了全部动画效果",
+    });
+  };
   
   return (
     <div className="relative bg-black">
@@ -103,7 +147,7 @@ const ParticleRing = () => {
           transition: "opacity 2s ease-in-out"
         }}
         linear
-        dpr={[1, 2]}
+        dpr={lowPerformanceMode ? 1 : [1, 2]}
       >
         <fog attach="fog" args={['#070710', 5, 30]} />
         <ambientLight intensity={0.2} />
@@ -119,16 +163,34 @@ const ParticleRing = () => {
           castShadow 
         />
         <GalaxyBackground />
-        <PointCircle showAnimation={showScene} />
-        <Postpro />
+        <PointCircle showAnimation={showScene} lowPerformanceMode={lowPerformanceMode} />
+        {!lowPerformanceMode && <Postpro />}
       </Canvas>
 
-      <MainHero />
+      <MainHero lowPerformanceMode={lowPerformanceMode} />
+      <Toaster />
+      
+      {/* 悬浮设置按钮 */}
+      <button 
+        onClick={() => {
+          toast("性能模式设置", {
+            description: lowPerformanceMode ? "当前为低性能模式，动画效果已减弱" : "当前为高性能模式，动画效果完整",
+            action: {
+              label: lowPerformanceMode ? "切换到高性能模式" : "切换到低性能模式",
+              onClick: () => togglePerformanceMode(),
+            },
+          });
+        }}
+        className="fixed bottom-6 right-6 bg-black/50 backdrop-blur-md p-3 rounded-full shadow-lg hover:bg-black/70 transition-all z-50 border border-gray-700"
+        aria-label="性能模式设置"
+      >
+        <Settings className="w-6 h-6 text-white" />
+      </button>
     </div>
   );
 };
 
-const PointCircle = ({ showAnimation }: { showAnimation: boolean }) => {
+const PointCircle = ({ showAnimation, lowPerformanceMode }: { showAnimation: boolean, lowPerformanceMode: boolean }) => {
   const ref = useRef<Group | null>(null);
   const light = useRef<any>(null);
   
@@ -146,11 +208,12 @@ const PointCircle = ({ showAnimation }: { showAnimation: boolean }) => {
     const time = clock.getElapsedTime();
     
     if (ref.current?.rotation) {
-      ref.current.rotation.z = time * 0.05;
+      // 低性能模式下减慢旋转速度
+      ref.current.rotation.z = time * (lowPerformanceMode ? 0.02 : 0.05);
     }
 
-    // 移动光源跟随鼠标
-    if (light.current) {
+    // 在低性能模式下减少光源移动
+    if (light.current && !lowPerformanceMode) {
       light.current.position.x = (mouse.x * viewport.width) / 2;
       light.current.position.y = (mouse.y * viewport.height) / 2;
     }
@@ -161,7 +224,7 @@ const PointCircle = ({ showAnimation }: { showAnimation: boolean }) => {
       <pointLight 
         ref={light}
         distance={40} 
-        intensity={10} 
+        intensity={lowPerformanceMode ? 5 : 10} 
         color="lightblue"
       >
         <mesh scale={[0.5, 0.5, 0.5]}>
@@ -174,7 +237,8 @@ const PointCircle = ({ showAnimation }: { showAnimation: boolean }) => {
         </mesh>
       </pointLight>
       
-      {pointsInner.map((point) => (
+      {/* 低性能模式下减少渲染的粒子数量 */}
+      {(lowPerformanceMode ? pointsInner.filter((_, i) => i % 2 === 0) : pointsInner).map((point) => (
         <Point 
           key={point.idx} 
           position={point.position} 
@@ -182,7 +246,7 @@ const PointCircle = ({ showAnimation }: { showAnimation: boolean }) => {
           size={getRandomSize(0.05, 0.18)}
         />
       ))}
-      {pointsOuter.map((point) => (
+      {(lowPerformanceMode ? pointsOuter.filter((_, i) => i % 2 === 0) : pointsOuter).map((point) => (
         <Point 
           key={point.idx} 
           position={point.position} 

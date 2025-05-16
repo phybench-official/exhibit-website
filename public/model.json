@@ -24,6 +24,31 @@
     }
   },
   {
+    "name": "Qwen3",
+    "id": "qwen3-235b-a22b",
+    "icon": "qwen",
+    "org": "Ali",
+    "note": "force",
+    "eed": {
+      "ALL": 40.76,
+      "MECHANICS": 41.05,
+      "ELECTRICITY": 38.57,
+      "THERMODYNAMICS": 46.63,
+      "OPTICS": 42.79,
+      "MODERN": 31.52,
+      "ADVANCED": 51.06
+    },
+    "acc": {
+      "ALL": 28.70,
+      "MECHANICS": 27.65,
+      "ELECTRICITY": 27.33,
+      "THERMODYNAMICS": 35.06,
+      "OPTICS": 33.33,
+      "MODERN": 22.0,
+      "ADVANCED": 31.58
+    }
+  },
+  {
     "name": "o3 (high)",
     "id": "o3-high",
     "icon": "openai",

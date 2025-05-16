@@ -18,6 +18,7 @@
   "modelInfo": "模型信息",
   "modelId": "模型ID",
   "scoreLabel": "得分",
+  "force": "强制启用推理",
   "fields": {
     "ALL": "总体得分",
     "MECHANICS": "力学",

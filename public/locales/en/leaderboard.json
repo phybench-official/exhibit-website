@@ -18,6 +18,7 @@
   "modelInfo": "Model Information",
   "modelId": "Model ID",
   "scoreLabel": "Score",
+  "force": "Force enable reasoning",
   "fields": {
     "ALL": "Overall Score",
     "MECHANICS": "Mechanics",

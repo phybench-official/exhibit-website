@@ -3,7 +3,12 @@ import { useTranslation } from "react-i18next";
 import { Bar, BarChart, XAxis, YAxis } from "recharts";
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
 import { ChevronRight } from "lucide-react";
-
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import {
   Card,
   CardContent,
@@ -43,6 +48,7 @@ import {
 
 import { LeaderboardIcon } from "./leaderboard/leaderboard-icon";
 import { ShiningText } from "./ui/shining-text";
+import { Info } from "lucide-react";
 
 // 定义模型数据类型
 interface ModelScore {
@@ -60,6 +66,7 @@ interface ModelData {
   id: string;
   icon: string;
   org: string;
+  note?: string;
   eed: ModelScore;
   acc: ModelScore;
 }
@@ -232,6 +239,20 @@ export default function LeaderBoard() {
                               {LeaderboardIcon(model.icon, 24)}
                             </div>
                             <span>{model.name}</span>
+                            {
+                              model.note && (
+                                <TooltipProvider>
+                                  <Tooltip>
+                                    <TooltipTrigger>
+                                      <Info className="h-4 w-4" />
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                      {t(model.note)}
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </TooltipProvider>
+                              )
+                            }
                           </div>
                         </TableCell>
                         <TableCell>{model.org}</TableCell>

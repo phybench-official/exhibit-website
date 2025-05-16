@@ -31,7 +31,7 @@ export default function DocCarousel() {
           >
             <CarouselContent>
               {problemImages.map((src, index) => (
-                <CarouselItem key={index} className="p-2">
+                <CarouselItem key={index} className="">
                   <div className="rounded-md object-contain mx-auto max-h-[500px] w-auto">
                     <Zmage 
                       src={src} 
