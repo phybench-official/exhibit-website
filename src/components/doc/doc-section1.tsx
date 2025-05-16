@@ -21,10 +21,10 @@ export default function DocSection1() {
           <h2 className="text-3xl font-bold text-center mb-8">🌟 Overview</h2>
           <div className="space-y-4">
             <p className="text-justify">
-              <strong>PHYBench</strong> is the first large-scale benchmark specifically designed to evaluate <strong>physical perception</strong> and <strong>robust reasoning</strong> capabilities in Large Language Models (LLMs).
+              <strong>PHYBench</strong> is the first large-scale benchmark engineered to evaluate <strong>physical perception</strong> and <strong>robust reasoning</strong> capabilities in Large Language Models (LLMs), addressing common challenges in existing benchmarks such as <strong>task saturation, potential data exposure, and verification inconsistencies</strong>.
             </p>
             <p className="text-justify">
-              With <strong>500 meticulously curated physics problems</strong> spanning mechanics, electromagnetism, thermodynamics, optics, modern physics, and advanced physics, it challenges models to demonstrate:
+              With <strong>500 original, meticulously curated physics problems</strong> spanning mechanics, electromagnetism, thermodynamics, optics, modern physics, and advanced physics, it challenges models to demonstrate:
             </p>
             <ul className="list-disc pl-6 space-y-2">
               <li><strong>Real-world grounding</strong>: Problems based on tangible physical scenarios (e.g., ball inside a bowl, pendulum dynamics)</li>

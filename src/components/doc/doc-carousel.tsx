@@ -46,12 +46,13 @@ export default function DocCarousel() {
           </Carousel>
           
           <div className="mt-10">
-            <h3 className="text-xl font-bold text-left mb-3">Answer Types</h3>
+            <h3 className="text-xl font-bold text-left mb-3">Answer Requirements:</h3>
             <div className="text-left">
               <ul className="list-disc pl-5">
-                <li className="mb-2">Strict symbolic expressions (e.g., <MathJax inline>{"$\\sqrt{\\frac{2g}{3R}}$"}</MathJax>)</li>
-                <li className="mb-2">Multiple equivalent forms accepted</li>
-                <li className="mb-2">No numerical approximations or equation chains</li>
+                <li className="mb-2">Single symbolic expressions (e.g., <MathJax inline>{"$\\sqrt{\\frac{2g}{3R}}$"}</MathJax>)</li>
+                <li className="mb-2">Equivalent forms accepted</li>
+                <li className="mb-2">No numerical approximations</li>
+                <li className="mb-2">No equation chains</li>
               </ul>
             </div>
           </div>
