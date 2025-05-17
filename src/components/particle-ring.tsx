@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { Canvas, useFrame, extend } from "@react-three/fiber";
 import { OrbitControls, Sphere, Effects, useTexture } from "@react-three/drei";
 import { pointsInner, pointsOuter } from "@/lib/particle";
@@ -10,6 +10,7 @@ import gsap from "gsap";
 import { Toaster } from "@/components/ui/sonner"
 import { toast } from "sonner"
 import { Settings } from "lucide-react"
+import { useTranslation } from "react-i18next";
 
 // 扩展Three.js对象到R3F
 extend({ WaterPass, UnrealBloomPass, FilmPass, LUTPass });
@@ -85,6 +86,8 @@ const ParticleRing = () => {
     const savedMode = localStorage.getItem('phybench-low-performance-mode');
     return savedMode === 'true';
   });
+
+  const { t } = useTranslation("common");
   
   useEffect(() => {
     // 初始仅显示 PHYBench 文字，背景场景隐藏
@@ -98,10 +101,10 @@ const ParticleRing = () => {
     const hasVisited = localStorage.getItem('phybench-visited');
     if (!hasVisited) {
       setTimeout(() => {
-        toast("欢迎使用PHYBench", {
-          description: "如果动画效果卡顿，可以切换到低性能模式",
+        toast(t("performance.welcome"), {
+          description: t("performance.hint"),
           action: {
-            label: "切换低性能模式",
+            label: t("performance.switchToLow"),
             onClick: () => {
               togglePerformanceMode(true);
             },
@@ -121,19 +124,19 @@ const ParticleRing = () => {
     return () => {
       document.removeEventListener('startBackgroundAnimation', handleStartAnimation);
     };
-  }, [lowPerformanceMode]);
+  }, [lowPerformanceMode, t]);
   
   // 切换性能模式的函数
-  const togglePerformanceMode = (newMode?: boolean) => {
+  const togglePerformanceMode = useCallback((newMode?: boolean) => {
     // 如果传入具体值就使用，否则切换当前值
     const updatedMode = newMode !== undefined ? newMode : !lowPerformanceMode;
     setLowPerformanceMode(updatedMode);
     localStorage.setItem('phybench-low-performance-mode', String(updatedMode));
     
-    toast(updatedMode ? "已切换到低性能模式" : "已切换到高性能模式", {
-      description: updatedMode ? "减少了动画效果以提高性能" : "启用了全部动画效果",
+    toast(updatedMode ? t("performance.lowMode") : t("performance.highMode"), {
+      description: updatedMode ? t("performance.lowDesc") : t("performance.highDesc"),
     });
-  };
+  }, [lowPerformanceMode, t]);
   
   return (
     <div className="relative bg-black">
@@ -173,16 +176,16 @@ const ParticleRing = () => {
       {/* 悬浮设置按钮 */}
       <button 
         onClick={() => {
-          toast("性能模式设置", {
-            description: lowPerformanceMode ? "当前为低性能模式，动画效果已减弱" : "当前为高性能模式，动画效果完整",
+          toast(t("performance.settings"), {
+            description: lowPerformanceMode ? t("performance.currentLow") : t("performance.currentHigh"),
             action: {
-              label: lowPerformanceMode ? "切换到高性能模式" : "切换到低性能模式",
+              label: lowPerformanceMode ? t("performance.switchToHigh") : t("performance.switchToLow"),
               onClick: () => togglePerformanceMode(),
             },
           });
         }}
         className="fixed bottom-6 right-6 bg-black/50 backdrop-blur-md p-3 rounded-full shadow-lg hover:bg-black/70 transition-all z-50 border border-gray-700"
-        aria-label="性能模式设置"
+        aria-label={t("performance.settings")}
       >
         <Settings className="w-6 h-6 text-white" />
       </button>
@@ -193,29 +196,58 @@ const ParticleRing = () => {
 const PointCircle = ({ showAnimation, lowPerformanceMode }: { showAnimation: boolean, lowPerformanceMode: boolean }) => {
   const ref = useRef<Group | null>(null);
   const light = useRef<any>(null);
+  const animationRef = useRef<gsap.core.Tween | null>(null);
+  // 记录上次更新时间以实现帧率控制
+  const lastUpdateTime = useRef<number>(0);
+  // 定义更新间隔 (毫秒)，低性能模式下降低更新频率
+  const updateInterval = useRef<number>(lowPerformanceMode ? 50 : 16);
+  
+  // 使用 useEffect 更新 updateInterval
+  useEffect(() => {
+    updateInterval.current = lowPerformanceMode ? 50 : 16;
+  }, [lowPerformanceMode]);
   
   useEffect(() => {
     if (showAnimation && ref.current) {
       // 粒子群从缩放0到正常大小的动画
-      gsap.fromTo(ref.current.scale, 
+      animationRef.current = gsap.fromTo(ref.current.scale, 
         { x: 0, y: 0, z: 0 }, 
         { x: 1, y: 1, z: 1, duration: 2, ease: "elastic.out(1, 0.5)" }
       );
     }
+    
+    // 组件卸载时清理动画
+    return () => {
+      if (animationRef.current) {
+        animationRef.current.kill();
+      }
+    };
   }, [showAnimation]);
   
-  useFrame(({ clock, mouse, viewport }) => {
-    const time = clock.getElapsedTime();
-    
+  // 优化的渲染函数
+  const updateRotation = useCallback((time: number) => {
     if (ref.current?.rotation) {
       // 低性能模式下减慢旋转速度
       ref.current.rotation.z = time * (lowPerformanceMode ? 0.02 : 0.05);
     }
-
-    // 在低性能模式下减少光源移动
+  }, [lowPerformanceMode]);
+  
+  const updateLightPosition = useCallback((mouse: { x: number, y: number }, viewport: { width: number, height: number }) => {
     if (light.current && !lowPerformanceMode) {
       light.current.position.x = (mouse.x * viewport.width) / 2;
       light.current.position.y = (mouse.y * viewport.height) / 2;
+    }
+  }, [lowPerformanceMode]);
+  
+  useFrame(({ clock, mouse, viewport }) => {
+    const time = clock.getElapsedTime();
+    const now = Date.now();
+    
+    // 实现帧率控制，仅在达到更新间隔时执行更新
+    if (now - lastUpdateTime.current >= updateInterval.current) {
+      updateRotation(time);
+      updateLightPosition(mouse, viewport);
+      lastUpdateTime.current = now;
     }
   });
 
@@ -258,12 +290,16 @@ const PointCircle = ({ showAnimation, lowPerformanceMode }: { showAnimation: boo
   );
 };
 
+// 优化Point组件以避免不必要的重渲染
 const Point = ({ position, color, size = 0.1 }: { position: number[]; color: string; size?: number }) => {
+  // 创建一个缓存的Vector3对象以避免每次渲染时创建新对象
+  const positionVector = useRef(new Vector3(position[0], position[1], position[2])).current;
+  
   return (
-    <Sphere position={position as unknown as Vector3} args={[size, 10, 10]}>
+    <Sphere position={positionVector} args={[size, 10, 10]}>
       <meshStandardMaterial
         emissive={color}
-        emissiveIntensity={0.5}  // 发光强度
+        emissiveIntensity={0.5}
         roughness={0.25}
         metalness={0.85}
         color={color}
@@ -272,13 +308,21 @@ const Point = ({ position, color, size = 0.1 }: { position: number[]; color: str
   );
 };
 
-// 后期处理效果
+// 优化后期处理效果组件
 const Postpro = () => {
   const water = useRef<any>(null);
+  const lastUpdateTime = useRef<number>(0);
+  const updateInterval = useRef<number>(30); // 降低后期处理的更新频率
   
   useFrame((state) => {
-    if (water.current) {
-      water.current.time = state.clock.elapsedTime * 2;
+    const now = Date.now();
+    
+    // 降低后期处理的更新频率
+    if (now - lastUpdateTime.current >= updateInterval.current) {
+      if (water.current) {
+        water.current.time = state.clock.elapsedTime * 2;
+      }
+      lastUpdateTime.current = now;
     }
   });
   

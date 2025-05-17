@@ -16,23 +16,57 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const [height, setHeight] = useState(0);
 
   useEffect(() => {
-    if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      setHeight(rect.height);
-    }
-  }, [ref]);
+    if (!ref.current) return;
+    
+    // 计算高度的函数
+    const updateHeight = () => {
+      if (ref.current) {
+        const rect = ref.current.getBoundingClientRect();
+        setHeight(rect.height);
+      }
+    };
+    
+    // 初始延迟计算，确保布局完成
+    const initialTimeout = setTimeout(updateHeight, 500);
+    
+    // 使用 ResizeObserver 监听内容大小变化
+    const resizeObserver = new ResizeObserver(() => {
+      updateHeight();
+    });
+    
+    resizeObserver.observe(ref.current);
+    
+    // 监听窗口大小变化
+    window.addEventListener('resize', updateHeight);
+    
+    // 初始调用一次
+    updateHeight();
+    
+    return () => {
+      clearTimeout(initialTimeout);
+      if (ref.current) {
+        resizeObserver.unobserve(ref.current);
+      }
+      window.removeEventListener('resize', updateHeight);
+    };
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 40%", "end 90%"],
+    offset: ["start 30%", "end 90%"],
   });
 
-  const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
+  const [transformHeight, setTransformHeight] = useState(0);
+  useEffect(() => {
+    setTransformHeight(height);
+  }, [height]);
+
+  const heightTransform = useTransform(scrollYProgress, [0, 1], [0, transformHeight]);
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
     <div
-      className="w-full font-sans md:px-10 lg:mb-20 backdrop-blur-xl"
+      className="w-full font-sans md:px-10 lg:mb-20 backdrop-blur-xl relative"
       ref={containerRef}
     >
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">

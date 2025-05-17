@@ -7,7 +7,6 @@ import { RainbowButton } from "./magicui/rainbow-button";
 import { InteractiveHoverButton } from "./magicui/interactive-hover-button";
 import { Link } from "react-router-dom";
 
-// 添加 props 类型定义
 interface MainHeroProps {
   lowPerformanceMode: boolean;
 }
@@ -22,53 +21,74 @@ export function MainHero({ lowPerformanceMode }: MainHeroProps) {
   useEffect(() => {
     // 创建动画时间线
     const tl = gsap.timeline();
-    // 初始状态
-    gsap.set(introRef.current, { 
-      opacity: 0,
-      clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)" 
-    });
     
-    // 初始化按钮容器为透明
-    gsap.set(buttonsRef.current, {
-      opacity: 0,
-      y: 20
-    });
-    
-    // 根据性能模式调整动画持续时间和缓动效果
-    const duration = lowPerformanceMode ? 0.8 : 1.2;
-    const easeType = lowPerformanceMode ? "power2.out" : "power3.out";
-    
-    // 只显示 PHYBench，居中
-    tl.fromTo(titleRef.current, 
-      { 
-        scale: lowPerformanceMode ? 1.2 : 1.5, 
-        opacity: 0,
-      }, 
-      { 
+    if (lowPerformanceMode) {
+      // 低性能模式：直接设置最终状态，不使用动画
+      gsap.set(titleRef.current, { 
         scale: 1, 
-        opacity: 1, 
-        duration: duration, 
-        ease: easeType 
-      }
-    )
-    // 显示 Introducing 文字
-    .to(introRef.current, {
-      opacity: 1,
-      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-      duration: lowPerformanceMode ? 0.7 : 1,
-      ease: lowPerformanceMode ? "power1.inOut" : "power2.inOut"
-    })
-    // 显示按钮部分
-    .to(buttonsRef.current, {
-      opacity: 1,
-      y: 0,
-      duration: lowPerformanceMode ? 0.5 : 0.8,
-      ease: lowPerformanceMode ? "back.out(1.3)" : "back.out(1.7)"
-    })
-    // 发送自定义事件通知背景可以开始渐显
-    .call(() => {
-      document.dispatchEvent(new CustomEvent('startBackgroundAnimation'));
-    });
+        opacity: 1 
+      });
+      
+      gsap.set(introRef.current, { 
+        opacity: 1,
+        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" 
+      });
+      
+      gsap.set(buttonsRef.current, {
+        opacity: 1,
+        y: 0
+      });
+      
+      // 直接触发背景动画开始事件
+      setTimeout(() => {
+        document.dispatchEvent(new CustomEvent('startBackgroundAnimation'));
+      }, 100); // 短暂延迟确保渲染完成
+    } else {
+      // 高性能模式：使用完整动画
+      // 初始状态
+      gsap.set(introRef.current, { 
+        opacity: 0,
+        clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)" 
+      });
+      
+      // 初始化按钮容器为透明
+      gsap.set(buttonsRef.current, {
+        opacity: 0,
+        y: 20
+      });
+      
+      // 完整的动画序列
+      tl.fromTo(titleRef.current, 
+        { 
+          scale: 1.5, 
+          opacity: 0,
+        }, 
+        { 
+          scale: 1, 
+          opacity: 1, 
+          duration: 1.2, 
+          ease: "power3.out" 
+        }
+      )
+      // 显示 Introducing 文字
+      .to(introRef.current, {
+        opacity: 1,
+        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+        duration: 1,
+        ease: "power2.inOut"
+      })
+      // 显示按钮部分
+      .to(buttonsRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "back.out(1.7)"
+      })
+      // 发送自定义事件通知背景可以开始渐显
+      .call(() => {
+        document.dispatchEvent(new CustomEvent('startBackgroundAnimation'));
+      });
+    }
     
     return () => {
       tl.kill();

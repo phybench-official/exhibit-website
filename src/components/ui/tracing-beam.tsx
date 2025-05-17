@@ -148,7 +148,7 @@ export const TracingBeam = ({
           </defs>
         </svg>
       </div>
-      <div ref={contentRef}>{children}</div>
+      <div ref={contentRef} className="relative z-10">{children}</div>
     </motion.div>
   );
 };

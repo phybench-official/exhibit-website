@@ -47,51 +47,52 @@ export function DocContent() {
   }, [])
 
   return (
-    <div className="w-full flex flex-col items-center justify-center px-6 md:px-48 xl:px-4 py-32 overflow-hidden">
-        <div 
-          ref={newtonRef}
-          className="left-0 w-full h-full fixed top-0"
-        >
-          <NewtonCradle />
-        </div>
+    <div className="w-full relative flex flex-col items-center justify-center px-6 md:px-48 xl:px-4 py-32 overflow-hidden">
+      <div 
+        ref={newtonRef}
+        className="left-0 w-full h-full fixed top-0"
+      >
+        <NewtonCradle />
+      </div>
       <TracingBeam>
-        <h1 className="text-3xl md:text-5xl xl:text-6xl font-bold text-center mt-18 md:mt-36 xl:mt-54 bg-transparent backdrop-blur-md py-4 md:p-8 rounded-3xl">{t("title")}</h1>
-        <div className="flex flex-wrap justify-center text-sm md:text-base max-w-4xl mx-auto md:mt-8">
-          {authors.map((author, index) => (
-            <span key={index} className="inline-flex items-center mx-2 my-0.5">
-              {author.url ? (
-                <a 
-                  href={author.url} 
-                  className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors  duration-200"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {t(`author.${author.name}`)}
-                </a>
-              ) : (
-                <span>{t(`author.${author.name}`)}</span>
-              )}
-              <sup className="ml-0.5">{author.affiliation}</sup>
-              {index < authors.length - 1 && <span className="ml-1">,</span>}
-            </span>
-          ))}
-        </div>
-        
-        {/* 机构信息部分 */}
-        <div className="mt-12 text-lg flex flex-col items-center space-y-1">
-          <div className="flex items-baseline"><sup className="mr-1">1</sup><span>{t("org.phy")}</span></div>
-          <div className="flex items-baseline"><sup className="mr-1">2</sup><span>{t("org.ai")}</span></div>
-          <div className="flex items-baseline"><sup className="mr-1">3</sup><span>{t("org.CSRC")}</span></div>
-          <div className="flex items-baseline"><sup className="mr-1">4</sup><span>{t("org.ic")}</span></div>
-          <div className="flex items-baseline"><sup className="mr-1">5</sup><span>{t("org.yp")}</span></div>
-        </div>
+        <div className="relative">
+          <h1 className="text-3xl md:text-5xl xl:text-6xl font-bold text-center mt-18 md:mt-36 xl:mt-54 bg-transparent backdrop-blur-md py-4 md:p-8 rounded-3xl">{t("title")}</h1>
+          <div className="flex flex-wrap justify-center text-sm md:text-base max-w-4xl mx-auto md:mt-8">
+            {authors.map((author, index) => (
+              <span key={index} className="inline-flex items-center mx-2 my-0.5">
+                {author.url ? (
+                  <a 
+                    href={author.url} 
+                    className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors  duration-200"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t(`author.${author.name}`)}
+                  </a>
+                ) : (
+                  <span>{t(`author.${author.name}`)}</span>
+                )}
+                <sup className="ml-0.5">{author.affiliation}</sup>
+                {index < authors.length - 1 && <span className="ml-1">,</span>}
+              </span>
+            ))}
+          </div>
+          
+          {/* 机构信息部分 */}
+          <div className="mt-12 text-lg flex flex-col items-center space-y-1">
+            <div className="flex items-baseline"><sup className="mr-1">1</sup><span>{t("org.phy")}</span></div>
+            <div className="flex items-baseline"><sup className="mr-1">2</sup><span>{t("org.ai")}</span></div>
+            <div className="flex items-baseline"><sup className="mr-1">3</sup><span>{t("org.CSRC")}</span></div>
+            <div className="flex items-baseline"><sup className="mr-1">4</sup><span>{t("org.ic")}</span></div>
+            <div className="flex items-baseline"><sup className="mr-1">5</sup><span>{t("org.yp")}</span></div>
+          </div>
 
-        <HeroLink />
+          <HeroLink />
 
-        <DocSection1 />
-        <DocCarousel />
-        <DocSection2 />
-      
+          <DocSection1 />
+          <DocCarousel />
+          <DocSection2 />
+        </div>
       </TracingBeam>
       
       <DocToc />

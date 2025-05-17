@@ -19,5 +19,18 @@
     "leaderboard": "排行榜"
   },
   "toc": "目录",
-  "viewdoc": "查看文档"
+  "viewdoc": "查看文档",
+  "performance": {
+    "welcome": "欢迎使用PHYBench",
+    "hint": "如果动画效果卡顿，可以切换到低性能模式",
+    "switchToLow": "切换低性能模式",
+    "switchToHigh": "切换到高性能模式",
+    "lowMode": "已切换到低性能模式",
+    "highMode": "已切换到高性能模式",
+    "lowDesc": "减少了动画效果以提高性能",
+    "highDesc": "启用了全部动画效果",
+    "settings": "性能模式设置",
+    "currentLow": "当前为低性能模式，动画效果已减弱",
+    "currentHigh": "当前为高性能模式，动画效果完整"
+  }
 }

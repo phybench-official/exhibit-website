@@ -19,5 +19,18 @@
     "leaderboard": "LeaderBoard"
   },
   "toc": "Table of Content",
-  "viewdoc": "Documentation"
+  "viewdoc": "Documentation",
+  "performance": {
+    "welcome": "Welcome to PHYBench",
+    "hint": "If animations are laggy, you can switch to low performance mode",
+    "switchToLow": "Switch Mode",
+    "switchToHigh": "Switch Mode",
+    "lowMode": "Switched to Low Performance Mode",
+    "highMode": "Switched to High Performance Mode",
+    "lowDesc": "Reduced animation effects to improve performance",
+    "highDesc": "Enabled all animation effects",
+    "settings": "Performance Mode Settings",
+    "currentLow": "Currently in low performance mode, animations reduced",
+    "currentHigh": "Currently in high performance mode, full animations enabled"
+  }
 }

@@ -10,6 +10,7 @@ import useLocalizedPath from "@/hooks/useLocalizedPath";
 import { Button } from "./ui/button";
 import { Menu, X } from "lucide-react";
 import useScrollDirection from "@/hooks/useScrollDirection";
+import { useNavigation } from "@/hooks/useNavigation";
 
 function GithubIcon() {
   return (
@@ -26,6 +27,7 @@ export function RootLayout() {
   const getLocalizedPath = useLocalizedPath();
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation(); // 添加useLocation钩子获取当前路由信息
+  const { navigateWithLoading } = useNavigation();
   // 使用自定义钩子获取滚动方向和位置
   const { scrollDir, scrollY } = useScrollDirection();
   
@@ -65,9 +67,11 @@ export function RootLayout() {
           isActive ? "text-primary" : "text-muted-foreground",
           activeLink === "/" ? "text-white hover:text-slate-400" : "",
         )}
-        onClick={() => {
+        onClick={(e) => {
+          e.preventDefault();
           setActiveLink(localizedPath);
           setMenuOpen(false);
+          navigateWithLoading(localizedPath);
         }}
       >
         {children}

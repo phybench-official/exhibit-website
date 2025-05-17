@@ -40,7 +40,7 @@ export default function DocSection2() {
             </div>
           </section>
 
-          <div className="text-justify">
+          <div className="text-justify mt-6">
             <h3 className="text-2xl font-semibold mb-4">3-Stage Rigorous Validation Pipeline</h3>
 
             <p className="mb-3">This pipeline addresses key issues highlighted in prior benchmarks. It ensures <strong>novelty</strong> (to prevent training contamination) and <strong>eliminates ambiguous or flawed items</strong> through extensive expert review, thereby enhancing PhyBench's overall quality and fairness.</p>
@@ -146,7 +146,7 @@ export default function DocSection2() {
           <div className="text-justify">
             <h3 className="text-2xl font-semibold mt-8 mb-4">Model performance on PHYBench</h3>
             <div className="mb-6">
-              <img src="/images/fig3.png" alt="Evaluation Results" className="w-full rounded-lg shadow-md" />
+              <img src="/images/fig3.png" alt="Evaluation Results" className="w-full rounded-lg shadow-md max-w-3xl mx-auto" />
             </div>
             <ol className="list-disc pl-5 space-y-2 mb-6">
               <li><strong>Significant Performance Gap</strong>: Even state-of-the-art LLMs significantly lag behind human experts in physical reasoning. The highest-performing model, Gemini 2.5 Pro, achieved only a 36.9% accuracy, compared to the human baseline of 61.9%.</li>
@@ -155,14 +155,14 @@ export default function DocSection2() {
             {/* ===== START OF ADDITIONAL CODE ===== */}
             <h3 className="text-2xl font-semibold mt-8 mb-4">Model Token Usage and Benchmark Difficulty</h3>
             <div className="mb-6">
-              <img src="/images/fig_4_token_consumption.jpg" alt="Model Token Usage and Scores Across Benchmarks" className="w-full rounded-lg shadow-md" />
+              <img src="/images/fig_4_token_consumption.jpg" alt="Model Token Usage and Scores Across Benchmarks" className="w-full rounded-lg shadow-md max-w-xl mx-auto" />
             </div>
             <p className="mb-4">
               PHYBench problems are designed to test advanced reasoning, which is reflected in the <strong>significantly more output tokens from models</strong> on average. This indicates that models engage in longer and more complex reasoning chains to attempt solutions.
             </p>
             <p className="mb-4"> <br /> </p>
             <div className="mb-6">
-              <img src="/images/fig4_score_avg_bar.jpg" alt="Score Avg Bar" className="w-full rounded-lg shadow-md" />
+              <img src="/images/fig4_score_avg_bar.jpg" alt="Score Avg Bar" className="w-full rounded-lg shadow-md max-w-xl mx-auto" />
             </div>
             <p className="mb-6">
               Concurrently, model performance (both accuracy and EED Score) on PHYBench is <strong>consistently lower</strong> than on benchmarks like AIME 2024, OlympiadBench, GPQA, and Math-500. This, combined with the higher token usage, highlights PHYBench's greater complexity and difficulty.
@@ -171,7 +171,7 @@ export default function DocSection2() {
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">Test-Time Scaling (TTS) Insights</h3>
             <div className="mb-6">
-              <img src="/images/fig5_passK.jpg" alt="Test-Time Scaling on PHYBench" className="w-full rounded-lg shadow-md" />
+              <img src="/images/fig5_passK.jpg" alt="Test-Time Scaling on PHYBench" className="w-full rounded-lg shadow-md max-w-xl mx-auto" />
             </div>
             <p className="mb-4">
               Evaluating models with <strong>Test-Time Scaling</strong> on PHYBench, where <strong>multiple responses are sampled for each problem</strong>, provides further insights into their reasoning robustness.
@@ -179,7 +179,7 @@ export default function DocSection2() {
             </p>
             <p className="mb-4"> <br /> </p>
             <div className="mb-6">
-              <img src="/images/fig5_vote.jpg" alt="Vote on PHYBench" className="w-full rounded-lg shadow-md" />
+              <img src="/images/fig5_vote.jpg" alt="Vote on PHYBench" className="w-full rounded-lg shadow-md max-w-xl mx-auto" />
             </div>
             <p className="mb-6">
               Similarly, when using <strong>majority-vote scaling</strong>, the performance distinctions between models remain evident.
