@@ -86,9 +86,9 @@ export default defineConfig({
           'visualization': ['recharts', 'cytoscape', 'cytoscape-cose-bilkent', 'cytoscape-fcose']
         },
         // 输出文件名
-        entryFileNames: `assets/[name].${version}.[hash].js`,
-        chunkFileNames: `assets/[name].${version}.[hash].js`,
-        assetFileNames: `assets/[name].${version}.[hash].[ext]`
+        entryFileNames: `assets/[name].[hash].js`,
+        chunkFileNames: `assets/[name].[hash].js`,
+        assetFileNames: `assets/[name].[hash].[ext]`
       },
     },
   },

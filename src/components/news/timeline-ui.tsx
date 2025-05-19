@@ -169,7 +169,41 @@ export function TimelineUI() {
     timestamp: "Apr 27, 2025",
   }
 
+  const qwen3release = {
+    authorName: "PHYBench",
+    authorHandle: "phybench-official",
+    // icon: "huggingface",
+    authorImage:
+      "https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg",
+    content: (
+      <>
+        <EllipsisText 
+          text={t("post.qwen3release")}
+          className=" whitespace-pre-line mb-4"
+        />
+        <div className="lg:grid lg:grid-cols-2 lg:gap-x-2 flex flex-col w-full">
+          <Zmage
+            src="https://s2.loli.net/2025/05/19/JLZVuXsTy5IERnA.png"
+            alt="qwen3 release"
+            className="mt-4 rounded-lg w-full lg:h-full"
+          />
+          <Zmage
+            src="https://s2.loli.net/2025/05/19/1AmhWLGXug9xJIn.png"
+            alt="qwen3 release"
+            className="mt-4 rounded-lg w-full lg:h-full"
+          />
+        </div>
+      </>
+    ),
+    isVerified: true,
+    timestamp: "May 10, 2025",
+  }
+
   const data = [
+    {
+      title: "2025-05-10",
+      content: <XCard {...qwen3release} />,
+    },
     {
       title: "2025-05-01",
       content: (
