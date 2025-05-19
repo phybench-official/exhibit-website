@@ -46,7 +46,7 @@ const Loader: FC = () => {
         
         {/* 星球1 */}
         <motion.div
-          className="absolute"
+          className="absolute w-40 h-40"
           animate={{
             rotate: 360
           }}
@@ -55,10 +55,15 @@ const Loader: FC = () => {
             repeat: Infinity,
             ease: "linear"
           }}
+          style={{ transform: "rotate(30deg)" }}
         >
           <motion.div
             className="w-4 h-4 rounded-full bg-blue-500 shadow-lg shadow-blue-500/50 absolute"
-            style={{ left: '78px' }}
+            style={{ 
+              top: "30%", 
+              right: "-2px",
+              transform: "translateY(-30%)"
+            }}
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ 
               duration: 2, 
@@ -70,7 +75,7 @@ const Loader: FC = () => {
         
         {/* 星球2 */}
         <motion.div
-          className="absolute"
+          className="absolute w-28 h-28"
           animate={{
             rotate: -360
           }}
@@ -79,10 +84,15 @@ const Loader: FC = () => {
             repeat: Infinity,
             ease: "linear"
           }}
+          style={{ transform: "rotate(120deg)" }}
         >
           <motion.div
             className="w-3 h-3 rounded-full bg-purple-500 shadow-lg shadow-purple-500/50 absolute"
-            style={{ left: '56px' }}
+            style={{ 
+              top: "28%", 
+              right: "-1.5px",
+              transform: "translateY(-28%)"
+            }}
             animate={{ scale: [1, 1.3, 1] }}
             transition={{ 
               duration: 1.5, 
@@ -94,7 +104,7 @@ const Loader: FC = () => {
         
         {/* 星球3 */}
         <motion.div
-          className="absolute"
+          className="absolute w-16 h-16"
           animate={{
             rotate: 360
           }}
@@ -103,10 +113,15 @@ const Loader: FC = () => {
             repeat: Infinity,
             ease: "linear"
           }}
+          style={{ transform: "rotate(210deg)" }}
         >
           <motion.div
             className="w-2 h-2 rounded-full bg-teal-500 shadow-lg shadow-teal-500/50 absolute"
-            style={{ left: '32px' }}
+            style={{ 
+              top: "28%", 
+              right: "-1px",
+              transform: "translateY(-28%)"
+            }}
             animate={{ scale: [1, 1.4, 1] }}
             transition={{ 
               duration: 1, 
