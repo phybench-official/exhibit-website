@@ -181,16 +181,16 @@ export function TimelineUI() {
           text={t("post.qwen3release")}
           className=" whitespace-pre-line mb-4"
         />
-        <div className="lg:grid lg:grid-cols-2 lg:gap-x-2 flex flex-col w-full">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-x-2 flex flex-col w-full lg:pb-4">
           <Zmage
             src="https://s2.loli.net/2025/05/19/JLZVuXsTy5IERnA.png"
             alt="qwen3 release"
-            className="mt-4 rounded-lg w-full lg:h-full"
+            className="mt-4 rounded-lg w-full lg:w-fit lg:h-full object-cover"
           />
           <Zmage
             src="https://s2.loli.net/2025/05/19/1AmhWLGXug9xJIn.png"
             alt="qwen3 release"
-            className="mt-4 rounded-lg w-full lg:h-full"
+            className="mt-4 rounded-lg w-full lg:w-fit lg:h-full object-cover"
           />
         </div>
       </>
@@ -199,7 +199,59 @@ export function TimelineUI() {
     timestamp: "May 10, 2025",
   }
 
+  const versionUpdate = {
+    authorName: "PHYBench",
+    authorHandle: "phybench-official",
+    icon: "huggingface",
+    iconlink: "https://huggingface.co/blog/StarThomas1002/arxiv-2504-16074",
+    authorImage:
+      "https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg",
+    content: (
+      <>
+        <EllipsisText
+          text={t("post.versionUpdate")}
+          className=" whitespace-pre-line mb-4" 
+        />
+        <a
+          href="https://huggingface.co/blog/StarThomas1002/arxiv-2504-16074"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sky-800 dark:text-sky-200 hover:text-blue-700 dark:hover:text-blue-300 font-semibold transition-colors mb-4 block">
+          https://huggingface.co/blog/StarThomas1002/arxiv-2504-16074
+        </a>
+        <div className="grid grid-cols-2 gap-2 mt-4">
+          <Zmage
+            src="https://pic1.imgdb.cn/item/682f0f0d58cb8da5c806cf65.png"
+            alt="version update image 1"
+            className="rounded-lg w-full h-32 lg:h-48 object-cover"
+          />
+          <Zmage
+            src="https://pic1.imgdb.cn/item/68271b5658cb8da5c8f7006c.jpg"
+            alt="version update image 2"
+            className="rounded-lg w-full h-32 lg:h-48 object-cover"
+          />
+          <Zmage
+            src="https://pic1.imgdb.cn/item/68271b7c58cb8da5c8f7031e.jpg"
+            alt="version update image 3"
+            className="rounded-lg w-full h-32 lg:h-48 object-cover"
+          />
+          <Zmage
+            src="https://pic1.imgdb.cn/item/68271b9458cb8da5c8f704d8.jpg"
+            alt="version update image 4"
+            className="rounded-lg w-full h-32 lg:h-48 object-cover"
+          />
+        </div>
+      </>
+    ),
+    isVerified: true,
+    timestamp: "May 25, 2025",
+  }
+
   const data = [
+    {
+      title: "2025-05-25",
+      content: <XCard {...versionUpdate} />,
+    },
     {
       title: "2025-05-10",
       content: <XCard {...qwen3release} />,

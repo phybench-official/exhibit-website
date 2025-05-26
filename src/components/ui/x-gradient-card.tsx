@@ -105,9 +105,9 @@ function XCard({
           </div>
         </div>
 
-        <div className="mt-2">
+        <div className="mt-4">
           {content}
-          <span className="text-black dark:text-white/50 text-sm mt-2 block">
+          <span className="text-black dark:text-white/50 text-sm mt-4 block">
             {timestamp}
           </span>
         </div>
