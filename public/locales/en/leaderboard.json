@@ -27,10 +27,5 @@
     "OPTICS": "Optics",
     "MODERN": "Modern",
     "ADVANCED": "Advanced"
-  },
-  "news": {
-    "post": {
-      "grok4": "Grok4 Achieves New Physics Reasoning Record, Gap with Human Experts Remains PHYBench team releases Grok4's latest evaluation results: Grok4          ACC: 42.33   EED: 53.03 Gemini 2.5 Pro ACC: 36.87   EED: 49.46 Human Expert   ACC: 61.90   EED: 71.40 Grok4 comprehensively surpasses previous SOTA Gemini 2.5 Pro, yet still significantly trails human expert baseline. Notably, while Grok4 demonstrates dominant performance on HLE, it only achieves marginal improvements on PHYBench, highlighting PHYBench's superior objectivity in measuring true model capabilities. Meanwhile, domestic Chinese models remain competitive and have not fallen behind. Peking University School of Physics will continuously update PHYBench, committed to providing the most objective evaluation for large language model physics reasoning assessment."
-    }
   }
 }

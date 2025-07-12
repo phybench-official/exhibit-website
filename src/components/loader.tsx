@@ -158,7 +158,7 @@ const Loader: FC = () => {
             animate={{ opacity: [0.4, 1, 0.4] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           >
-            LOADING
+            LOADING..
           </motion.span>
         </div>
       </div>

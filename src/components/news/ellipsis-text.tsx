@@ -46,7 +46,7 @@ export function EllipsisText({ text, className }: EllipsisTextProps) {
       <div 
         ref={textRef}
         className={cn(
-          "w-full", 
+          "w-full whitespace-pre-wrap break-words", 
           !isExpanded && "line-clamp-10",
         )}
       >
@@ -55,7 +55,7 @@ export function EllipsisText({ text, className }: EllipsisTextProps) {
       {(isTruncated || isExpanded) && (
         <button
           onClick={toggleExpand}
-          className="flex items-center text-xs text-sky-700 dark:text-sky-300 mt-2 hover:text-blue-700 dark:hover:text-blue-300 hover:font-semibold transition-colors"
+          className="flex items-center text-xs text-sky-700 dark:text-sky-300 mt-2 hover:text-blue-700 dark:hover:text-blue-300 hover:font-semibold transition-colors cursor-pointer"
         >
           {isExpanded ? (
             <>

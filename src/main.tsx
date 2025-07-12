@@ -9,7 +9,6 @@ import '@/lib/i18n.ts'
 import type { LenisRef } from 'lenis/react';
 // import { cancelFrame, frame } from 'framer-motion';
 import { useEffect, useRef, lazy, useState } from 'react';
-// import gsap from 'gsap'
 import { AnimatePresence } from 'framer-motion'
 import Loader from './components/loader.tsx'
 import { LoadingProvider, useLoading } from './hooks/loading-context.tsx'
@@ -68,6 +67,7 @@ function AppWithLoading() {
       if (link && 
           link.getAttribute('href') && 
           !link.getAttribute('href')?.startsWith('http') && 
+          !link.getAttribute('href')?.startsWith('#') && // 排除页面内跳转
           !link.getAttribute('target')) {
         e.preventDefault();
         const path = link.getAttribute('href') || '/';
