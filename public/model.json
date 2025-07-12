@@ -145,6 +145,30 @@
     }
   },
   {
+    "name": "DeepSeek-R1 0528",
+    "id": "deepseek-r1-250528",
+    "icon": "deepseek",
+    "org": "DeepSeek",
+    "eed": {
+      "ALL": 44.25,
+      "MECHANICS": 44.69,
+      "ELECTRICITY": 43.58,
+      "THERMODYNAMICS": 50.04,
+      "OPTICS": 40.30,
+      "MODERN": 35.05,
+      "ADVANCED": 55.95
+    },
+    "acc": {
+      "ALL": 33.45,
+      "MECHANICS": 35.48,
+      "ELECTRICITY": 30.43,
+      "THERMODYNAMICS": 41.56,
+      "OPTICS": 28.00,
+      "MODERN": 24.00,
+      "ADVANCED": 42.11
+    }
+  },
+  {
     "name": "o3-mini (high)",
     "id": "o3-mini-high",
     "icon": "openai",
@@ -241,6 +265,30 @@
     }
   },
   {
+    "name": "Grok 4",
+    "id": "grok-4",
+    "icon": "grok",
+    "org": "xAI",
+    "eed": {
+      "ALL": 53.03,
+      "MECHANICS": 52.54,
+      "ELECTRICITY": 54.62,
+      "THERMODYNAMICS": 56.92,
+      "OPTICS": 51.59,
+      "MODERN": 43.05,
+      "ADVANCED": 59.49
+    },
+    "acc": {
+      "ALL": 42.33,
+      "MECHANICS": 43.32,
+      "ELECTRICITY": 42.86,
+      "THERMODYNAMICS": 46.75,
+      "OPTICS": 40.00,
+      "MODERN": 32.00,
+      "ADVANCED": 42.11
+    }
+  },
+  {
     "name": "Gemini-2.0-Flash Thinking",
     "id": "gemini-2-flash-thinking",
     "icon": "gemini",
@@ -286,6 +334,30 @@
       "OPTICS": 12.90,
       "MODERN": 14.81,
       "ADVANCED": 14.29
+    }
+  },
+  {
+    "name": "Claude-4 Sonnet-Thinking",
+    "id": "claude-4-sonnet-thinking",
+    "icon": "claude",
+    "org": "Anthropic",
+    "eed": {
+      "ALL": 30.83,
+      "MECHANICS": 31.84,
+      "ELECTRICITY": 29.21,
+      "THERMODYNAMICS": 35.12,
+      "OPTICS": 27.54,
+      "MODERN": 25.47,
+      "ADVANCED": 38.44
+    },
+    "acc": {
+      "ALL": 19.16,
+      "MECHANICS": 18.89,
+      "ELECTRICITY": 17.39,
+      "THERMODYNAMICS": 25.97,
+      "OPTICS": 18.00,
+      "MODERN": 16.00,
+      "ADVANCED": 21.05
     }
   },
   {

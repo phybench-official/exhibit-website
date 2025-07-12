@@ -183,7 +183,7 @@ export default function LeaderBoard() {
             <CardDescription>{t("chartDescription")}</CardDescription>
           </CardHeader>
           <CardContent>
-            <ChartContainer config={chartConfig} className="w-full h-180 lg:h-168 lg:mt-12">
+            <ChartContainer config={chartConfig} className="w-full h-200 lg:h-168 lg:mt-12">
               <BarChart
                 data={chartData}
                 layout="vertical"
