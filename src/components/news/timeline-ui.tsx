@@ -169,6 +169,23 @@ export function TimelineUI() {
     timestamp: "Apr 27, 2025",
   }
 
+  const releaseGrok4 = {
+    authorName: "PHYBench",
+    authorHandle: "phybench-official",
+    authorImage:
+      "https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg",
+    content: (
+      <>
+        <EllipsisText 
+          text={t("post.grok4")}
+          className=" whitespace-pre-line mb-4"
+        />
+      </>
+    ),
+    isVerified: true,
+    timestamp: "Jul 12, 2025",
+  }
+
   const qwen3release = {
     authorName: "PHYBench",
     authorHandle: "phybench-official",
@@ -248,6 +265,10 @@ export function TimelineUI() {
   }
 
   const data = [
+    {
+      title: "2025-07-12",
+      content: <XCard {...releaseGrok4} />,
+    },
     {
       title: "2025-05-25",
       content: <XCard {...versionUpdate} />,

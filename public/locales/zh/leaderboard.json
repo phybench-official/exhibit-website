@@ -27,5 +27,10 @@
     "OPTICS": "光学",
     "MODERN": "近代物理",
     "ADVANCED": "高等物理"
+  },
+  "news": {
+    "post": {
+      "grok4": "Grok4创造物理推理新纪录，距人类专家水平仍有差距 PHYBench团队发布Grok4最新评测结果： Grok4          ACC: 42.33   EED: 53.03 Gemini 2.5 Pro ACC: 36.87   EED: 49.46 Human Expert   ACC: 61.90   EED: 71.40 Grok4全面超越前SOTA模型Gemini 2.5 Pro，但仍明显落后于人类专家基准。 值得关注的是，Grok4在HLE上断崖领先其他模型，但在PHYBench上仅取得微弱优势，这凸显了PHYBench更能客观衡量模型真实能力。与此同时，国内大模型表现紧随其后，并未掉队。 北大物理学院将持续更新PHYBench，致力于为大模型物理推理评测提供最客观评判。"
+    }
   }
 }
