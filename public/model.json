@@ -1,5 +1,29 @@
 [
   {
+    "name": "Human Expert",
+    "id": "human-expert",
+    "icon": "human",
+    "org": "Peking University",
+    "eed": {
+      "ALL": 71.40,
+      "MECHANICS": 0,
+      "ELECTRICITY": 0,
+      "THERMODYNAMICS": 0,
+      "OPTICS": 0,
+      "MODERN": 0,
+      "ADVANCED": 0
+    },
+    "acc": {
+      "ALL": 61.90,
+      "MECHANICS": 0,
+      "ELECTRICITY": 0,
+      "THERMODYNAMICS": 0,
+      "OPTICS": 0,
+      "MODERN": 0,
+      "ADVANCED": 0
+    }
+  },
+  {
     "name": "Gemini 2.5 pro",
     "id": "gemini-2.5-pro",
     "icon": "gemini",
@@ -217,7 +241,7 @@
     }
   },
   {
-    "name": "Gemini 2.0 Flash Thinking",
+    "name": "Gemini-2.0-Flash Thinking",
     "id": "gemini-2-flash-thinking",
     "icon": "gemini",
     "org": "Google",
@@ -265,7 +289,7 @@
     }
   },
   {
-    "name": "Claude 3.7 Sonnet Thinking",
+    "name": "Claude-3.7 Sonnet-Thinking",
     "id": "claude-3.7-sonnet-thinking",
     "icon": "claude",
     "org": "Anthropic",
@@ -361,7 +385,7 @@
     }
   },
   {
-    "name": "Claude 3.7 Sonnet",
+    "name": "Claude-3.7 Sonnet",
     "id": "claude-3.7-sonnet",
     "icon": "claude",
     "org": "Anthropic",

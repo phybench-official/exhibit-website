@@ -1,4 +1,5 @@
 import { Gemini, DeepSeek, OpenAI, Claude, Qwen, Grok } from '@lobehub/icons';
+import { GraduationCap } from 'lucide-react';
 
 export function LeaderboardIcon(model: string, size: number = 24) {
   switch (model) {
@@ -14,6 +15,8 @@ export function LeaderboardIcon(model: string, size: number = 24) {
       return <Qwen.Avatar size={size} />;
     case 'grok':
       return <Grok.Avatar size={size} />;
+    case 'human':
+      return <GraduationCap size={size} />;
     default:
       return null;
   }

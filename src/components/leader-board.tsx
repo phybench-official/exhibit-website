@@ -85,7 +85,13 @@ export default function LeaderBoard() {
     fetch("/model.json")
       .then(response => response.json())
       .then(data => {
-        setModels(data.sort((a: ModelData, b: ModelData) => 
+        const filteredData = selectedField !== "ALL" 
+          ? data.filter((model: ModelData) => model.id !== "human-expert")
+          : data;
+
+        console.log(data.length, filteredData.length);
+        
+        setModels(filteredData.sort((a: ModelData, b: ModelData) => 
           b[scoreType][selectedField as keyof ModelScore] - a[scoreType][selectedField as keyof ModelScore]));
       })
       .catch(error => console.error("Error loading model data:", error));
@@ -108,8 +114,9 @@ export default function LeaderBoard() {
     fill: model.icon === 'openai' ? "hsl(var(--chart-1))" :
           model.icon === 'gemini' ? "hsl(var(--chart-2))" :
           model.icon === 'claude' ? "hsl(var(--chart-3))" :
-          model.icon === 'deepseek' ? "hsl(var(--chart-4))" :
+          model.icon === 'human' ? "hsl(var(--chart-4))" :
           "hsl(var(--chart-5))"
+
   }));
 
   const radarConfig = {
@@ -176,7 +183,7 @@ export default function LeaderBoard() {
             <CardDescription>{t("chartDescription")}</CardDescription>
           </CardHeader>
           <CardContent>
-            <ChartContainer config={chartConfig} className="w-full h-120 lg:h-168 lg:mt-12">
+            <ChartContainer config={chartConfig} className="w-full h-180 lg:h-168 lg:mt-12">
               <BarChart
                 data={chartData}
                 layout="vertical"
@@ -226,153 +233,170 @@ export default function LeaderBoard() {
               </TableHeader>
               <TableBody>
                 {models.map((model, index) => (
-                  <Dialog key={model.id}>
-                    {/* 表格内容 */}
-                    <DialogTrigger asChild>
-                      <TableRow 
-                        className="cursor-pointer hover:bg-muted/50"
-                      >
-                        <TableCell className="font-medium">{index + 1}</TableCell>
-                        <TableCell>
-                          <div className="flex items-center gap-2">
-                            <div className="flex items-center justify-center w-8 h-8">
-                              {LeaderboardIcon(model.icon, 24)}
+                  model.id !== "human-expert" ? (
+                    <Dialog key={model.id}>
+                      {/* 表格内容 */}
+                      <DialogTrigger asChild >
+                        <TableRow 
+                          className="cursor-pointer hover:bg-muted/50"
+                        >
+                          <TableCell className="font-medium">{index + 1}</TableCell>
+                          <TableCell>
+                            <div className="flex items-center gap-2">
+                              <div className="flex items-center justify-center w-8 h-8">
+                                {LeaderboardIcon(model.icon, 24)}
+                              </div>
+                              <span>{model.name}</span>
+                              {
+                                model.note && (
+                                  <TooltipProvider>
+                                    <Tooltip>
+                                      <TooltipTrigger>
+                                        <Info className="h-4 w-4" />
+                                      </TooltipTrigger>
+                                      <TooltipContent>
+                                        {t(model.note)}
+                                      </TooltipContent>
+                                    </Tooltip>
+                                  </TooltipProvider>
+                                )
+                              }
                             </div>
-                            <span>{model.name}</span>
-                            {
-                              model.note && (
-                                <TooltipProvider>
-                                  <Tooltip>
-                                    <TooltipTrigger>
-                                      <Info className="h-4 w-4" />
-                                    </TooltipTrigger>
-                                    <TooltipContent>
-                                      {t(model.note)}
-                                    </TooltipContent>
-                                  </Tooltip>
-                                </TooltipProvider>
-                              )
-                            }
+                          </TableCell>
+                          <TableCell>{model.org}</TableCell>
+                          <TableCell className="text-right font-medium">{model[scoreType][selectedField as keyof ModelScore].toFixed(2)}</TableCell>
+                          <TableCell><ChevronRight className="h-4 w-4" /></TableCell>
+                        </TableRow>
+                      </DialogTrigger>
+                      {/* 模态框内容 */}
+                      <DialogContent className="sm:max-w-3xl max-h-[85vh] overflow-y-auto">
+                        <DialogHeader>
+                          <div className="flex items-center gap-3">
+                            <div className="flex items-center justify-center w-10 h-12">
+                              {LeaderboardIcon(model.icon, 32)}
+                            </div>
+                            <DialogTitle className="text-xl">{model.name}</DialogTitle>
                           </div>
-                        </TableCell>
-                        <TableCell>{model.org}</TableCell>
-                        <TableCell className="text-right font-medium">{model[scoreType][selectedField as keyof ModelScore].toFixed(2)}</TableCell>
-                        <TableCell><ChevronRight className="h-4 w-4" /></TableCell>
-                      </TableRow>
-                    </DialogTrigger>
-                    {/* 模态框内容 */}
-                    <DialogContent className="sm:max-w-3xl max-h-[85vh] overflow-y-auto">
-                      <DialogHeader>
-                        <div className="flex items-center gap-3">
-                          <div className="flex items-center justify-center w-10 h-12">
-                            {LeaderboardIcon(model.icon, 32)}
-                          </div>
-                          <DialogTitle className="text-xl">{model.name}</DialogTitle>
-                        </div>
-                        <DialogDescription>{t("modelDetails")}</DialogDescription>
-                      </DialogHeader>
-                      
-                      <div className="grid gap-4 py-4">
-                        <div className="flex flex-col lg:flex-row items-center gap-6">
-                          {/* 雷达图 */}
-                          <div className="w-full lg:w-1/2 py-6 max-w-[70vw]">
-                            <ChartContainer config={radarConfig} className="h-54 -translate-x-[3rem]">
-                              <RadarChart
-                                data={[
-                                  { 
-                                    subject: "MECHANICS", 
-                                    EED: model.eed.MECHANICS,
-                                    ACC: model.acc.MECHANICS
-                                  },
-                                  { 
-                                    subject: "ELECTRICITY", 
-                                    EED: model.eed.ELECTRICITY,
-                                    ACC: model.acc.ELECTRICITY
-                                  },
-                                  { 
-                                    subject: "THERMODYNAMICS", 
-                                    EED: model.eed.THERMODYNAMICS,
-                                    ACC: model.acc.THERMODYNAMICS
-                                  },
-                                  { 
-                                    subject: "OPTICS", 
-                                    EED: model.eed.OPTICS,
-                                    ACC: model.acc.OPTICS
-                                  },
-                                  { 
-                                    subject: "MODERN", 
-                                    EED: model.eed.MODERN,
-                                    ACC: model.acc.MODERN
-                                  },
-                                  { 
-                                    subject: "ADVANCED", 
-                                    EED: model.eed.ADVANCED,
-                                    ACC: model.acc.ADVANCED
-                                  },
-                                ]}
-                                className="mx-auto "
-                                outerRadius={90}
-                              >
-                                <PolarGrid />
-                                <PolarAngleAxis
-                                  dataKey="subject"
-                                  tickFormatter={(value) => t(`fields.${value}`)}
-                                />
-                                <Radar
-                                  name="EED Score"
-                                  dataKey="EED"
-                                  fill="hsl(var(--chart-1))"
-                                  fillOpacity={0.5}
-                                  dot={{
-                                    r: 3,
-                                    fillOpacity: 1,
-                                  }}
-                                />
-                                <Radar
-                                  name="Accuracy Score"
-                                  dataKey="ACC"
-                                  fill="hsl(var(--chart-2))"
-                                  fillOpacity={0.5}
-                                  dot={{
-                                    r: 3,
-                                    fillOpacity: 1,
-                                  }}
-                                />
-                                <ChartTooltip content={<ChartTooltipContent />} />
-                              </RadarChart>
-                            </ChartContainer>
-                          </div>
+                          <DialogDescription>{t("modelDetails")}</DialogDescription>
+                        </DialogHeader>
+                        
+                        <div className="grid gap-4 py-4">
+                          <div className="flex flex-col lg:flex-row items-center gap-6">
+                            {/* 雷达图 */}
+                            <div className="w-full lg:w-1/2 py-6 max-w-[70vw]">
+                              <ChartContainer config={radarConfig} className="h-54 -translate-x-[3rem]">
+                                <RadarChart
+                                  data={[
+                                    { 
+                                      subject: "MECHANICS", 
+                                      EED: model.eed.MECHANICS,
+                                      ACC: model.acc.MECHANICS
+                                    },
+                                    { 
+                                      subject: "ELECTRICITY", 
+                                      EED: model.eed.ELECTRICITY,
+                                      ACC: model.acc.ELECTRICITY
+                                    },
+                                    { 
+                                      subject: "THERMODYNAMICS", 
+                                      EED: model.eed.THERMODYNAMICS,
+                                      ACC: model.acc.THERMODYNAMICS
+                                    },
+                                    { 
+                                      subject: "OPTICS", 
+                                      EED: model.eed.OPTICS,
+                                      ACC: model.acc.OPTICS
+                                    },
+                                    { 
+                                      subject: "MODERN", 
+                                      EED: model.eed.MODERN,
+                                      ACC: model.acc.MODERN
+                                    },
+                                    { 
+                                      subject: "ADVANCED", 
+                                      EED: model.eed.ADVANCED,
+                                      ACC: model.acc.ADVANCED
+                                    },
+                                  ]}
+                                  className="mx-auto "
+                                  outerRadius={90}
+                                >
+                                  <PolarGrid />
+                                  <PolarAngleAxis
+                                    dataKey="subject"
+                                    tickFormatter={(value) => t(`fields.${value}`)}
+                                  />
+                                  <Radar
+                                    name="EED Score"
+                                    dataKey="EED"
+                                    fill="hsl(var(--chart-1))"
+                                    fillOpacity={0.5}
+                                    dot={{
+                                      r: 3,
+                                      fillOpacity: 1,
+                                    }}
+                                  />
+                                  <Radar
+                                    name="Accuracy Score"
+                                    dataKey="ACC"
+                                    fill="hsl(var(--chart-2))"
+                                    fillOpacity={0.5}
+                                    dot={{
+                                      r: 3,
+                                      fillOpacity: 1,
+                                    }}
+                                  />
+                                  <ChartTooltip content={<ChartTooltipContent />} />
+                                </RadarChart>
+                              </ChartContainer>
+                            </div>
 
-                          {/* 详细信息 */}
-                          <div className="w-full lg:w-1/2">
-                            <h3 className="text-lg font-semibold mb-3">{t("detailedScores")} ({scoreType === "eed" ? "EED" : "Accuracy"})</h3>
-                            <div className="space-y-2">
-                              {Object.entries(model[scoreType]).map(([key, value]) => (
-                                <div key={key} className="flex justify-between text-sm lg:text-base items-center border-b border-muted pb-1">
-                                  <span>{t(`fields.${key}`)}</span>
-                                  <span className="font-medium">{value.toFixed(2)}</span>
-                                </div>
-                              ))}
-                            </div>
-                            
-                            <div className="mt-6">
-                              <h3 className="text-lg font-semibold mb-2">{t("modelInfo")}</h3>
-                              <div className="space-y-2 text-sm lg:text-base">
-                                <div className="grid grid-cols-3 gap-2">
-                                  <span className="font-medium">{t("organization")}:</span>
-                                  <span className="col-span-2">{model.org}</span>
-                                </div>
-                                <div className="grid grid-cols-3 gap-2">
-                                  <span className="font-medium">{t("modelId")}:</span>
-                                  <span className="col-span-2 break-all">{model.id}</span>
+                            {/* 详细信息 */}
+                            <div className="w-full lg:w-1/2">
+                              <h3 className="text-lg font-semibold mb-3">{t("detailedScores")} ({scoreType === "eed" ? "EED" : "Accuracy"})</h3>
+                              <div className="space-y-2">
+                                {Object.entries(model[scoreType]).map(([key, value]) => (
+                                  <div key={key} className="flex justify-between text-sm lg:text-base items-center border-b border-muted pb-1">
+                                    <span>{t(`fields.${key}`)}</span>
+                                    <span className="font-medium">{value.toFixed(2)}</span>
+                                  </div>
+                                ))}
+                              </div>
+                              
+                              <div className="mt-6">
+                                <h3 className="text-lg font-semibold mb-2">{t("modelInfo")}</h3>
+                                <div className="space-y-2 text-sm lg:text-base">
+                                  <div className="grid grid-cols-3 gap-2">
+                                    <span className="font-medium">{t("organization")}:</span>
+                                    <span className="col-span-2">{model.org}</span>
+                                  </div>
+                                  <div className="grid grid-cols-3 gap-2">
+                                    <span className="font-medium">{t("modelId")}:</span>
+                                    <span className="col-span-2 break-all">{model.id}</span>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </DialogContent>
-                  </Dialog>
+                      </DialogContent>
+                    </Dialog>  
+                  ) : (
+                    <TableRow key={model.id} className="cursor-not-allowed font-bold">
+                      <TableCell className="font-medium">{index + 1}</TableCell>
+                      <TableCell>
+                        <div className="flex items-center gap-2">
+                          <div className="flex items-center justify-center w-8 h-8">
+                            {LeaderboardIcon(model.icon, 24)}
+                          </div>
+                          <span>{model.name}</span>
+                        </div>
+                      </TableCell>
+                      <TableCell>{model.org}</TableCell>
+                      <TableCell className="text-right">{model[scoreType][selectedField as keyof ModelScore].toFixed(2)}</TableCell>
+                      <TableCell><ChevronRight className="h-4 w-4 opacity-20" /></TableCell>
+                    </TableRow>
+                  )
                 ))}
               </TableBody>
             </Table>
