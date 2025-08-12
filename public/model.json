@@ -24,10 +24,11 @@
     }
   },
   {
-    "name": "Gemini 2.5 pro",
-    "id": "gemini-2.5-pro",
+    "name": "Gemini 2.5 pro 0325",
+    "id": "gemini-2.5-pro-exp-2025-03-25",
     "icon": "gemini",
     "org": "Google",
+    "note": "preview 2025-03-25",
     "eed": {
       "ALL": 49.46,
       "MECHANICS": 50.47,
@@ -48,8 +49,57 @@
     }
   },
   {
+    "name": "Gemini 2.5 pro",
+    "id": "gemini-2.5-pro-2025-06-17",
+    "icon": "gemini",
+    "org": "Google",
+    "note": "Final 2025-06-17",
+    "eed": {
+      "ALL": 56.54,
+      "MECHANICS": 56.98,
+      "ELECTRICITY": 56.43,
+      "THERMODYNAMICS": 60.42,
+      "OPTICS": 54.40,
+      "MODERN": 50.35,
+      "ADVANCED": 58.65
+    },
+    "acc": {
+      "ALL": 45.82,
+      "MECHANICS": 47.00,
+      "ELECTRICITY": 45.34,
+      "THERMODYNAMICS": 50.65,
+      "OPTICS": 40.00,
+      "MODERN": 40.00,
+      "ADVANCED": 47.37
+    }
+  },
+  {
+    "name": "Gemini 2.5 Flash",
+    "id": "gemini-2.5-flash-2025-06-17",
+    "icon": "gemini",
+    "org": "Google",
+    "eed": {
+      "ALL": 44.84,
+      "MECHANICS": 44.85,
+      "ELECTRICITY": 47.21,
+      "THERMODYNAMICS": 43.39,
+      "OPTICS": 45.06,
+      "MODERN": 38.39,
+      "ADVANCED": 46.80
+    },
+    "acc": {
+      "ALL": 33.45,
+      "MECHANICS": 34.10,
+      "ELECTRICITY": 35.40,
+      "THERMODYNAMICS": 32.47,
+      "OPTICS": 34.00,
+      "MODERN": 26.00,
+      "ADVANCED": 31.58
+    }
+  },
+  {
     "name": "Qwen3",
-    "id": "qwen3-235b-a22b",
+    "id": "qwen3-235b-a22b-2025-04-29",
     "icon": "qwen",
     "org": "Ali",
     "note": "force",
@@ -69,6 +119,31 @@
       "THERMODYNAMICS": 35.06,
       "OPTICS": 33.33,
       "MODERN": 22.0,
+      "ADVANCED": 31.58
+    }
+  },
+  {
+    "name": "Qwen3 2507",
+    "id": "qwen3-235b-a22b-thinking-2507",
+    "icon": "qwen",
+    "org": "Ali",
+    "note": "2025-07-22",
+    "eed": {
+      "ALL": 45.42,
+      "MECHANICS": 42.8,
+      "ELECTRICITY": 45.96,
+      "THERMODYNAMICS": 50.06,
+      "OPTICS": 47.04,
+      "MODERN": 45.44,
+      "ADVANCED": 47.7
+    },
+    "acc": {
+      "ALL": 35.02,
+      "MECHANICS": 31.34,
+      "ELECTRICITY": 35.40,
+      "THERMODYNAMICS": 41.56,
+      "OPTICS": 36.00,
+      "MODERN": 40.00,
       "ADVANCED": 31.58
     }
   },
@@ -122,30 +197,6 @@
   },
   {
     "name": "DeepSeek-R1",
-    "id": "deepseek-reasoner",
-    "icon": "deepseek",
-    "org": "DeepSeek",
-    "eed": {
-      "ALL": 37.86,
-      "MECHANICS": 38.72,
-      "ELECTRICITY": 35.10,
-      "THERMODYNAMICS": 41.74,
-      "OPTICS": 38.01,
-      "MODERN": 33.61,
-      "ADVANCED": 46.33
-    },
-    "acc": {
-      "ALL": 25.04,
-      "MECHANICS": 24.88,
-      "ELECTRICITY": 21.74,
-      "THERMODYNAMICS": 31.17,
-      "OPTICS": 27.45,
-      "MODERN": 24.0,
-      "ADVANCED": 26.32
-    }
-  },
-  {
-    "name": "DeepSeek-R1 0528",
     "id": "deepseek-r1-250528",
     "icon": "deepseek",
     "org": "DeepSeek",
@@ -410,7 +461,7 @@
   },
   {
     "name": "DeepSeek-V3",
-    "id": "deepseek-chat",
+    "id": "deepseek-v3-2025-03-24",
     "icon": "deepseek",
     "org": "DeepSeek",
     "eed": {
@@ -505,75 +556,171 @@
     }
   },
   {
-    "name": "Qwen2.5-max",
-    "id": "qwen-2.5-max",
+    "name": "Qwen-max",
+    "id": "qwen-max-2025-01-25",
     "icon": "qwen",
     "org": "Ali",
     "eed": {
-      "ALL": 13.94,
-      "MECHANICS": 13.99,
-      "ELECTRICITY": 14.84,
-      "THERMODYNAMICS": 9.51,
-      "OPTICS": 21.33,
-      "MODERN": 11.11,
-      "ADVANCED": 11.24
+      "ALL": 15.33,
+      "MECHANICS": 13.77,
+      "ELECTRICITY": 17.6,
+      "THERMODYNAMICS": 14.38,
+      "OPTICS": 23.41,
+      "MODERN": 8.48,
+      "ADVANCED": 14.6
     },
     "acc": {
-      "ALL": 6.09,
-      "MECHANICS": 5.99,
-      "ELECTRICITY": 6.21,
-      "THERMODYNAMICS": 2.6,
-      "OPTICS": 13.73,
-      "MODERN": 6.0,
+      "ALL": 6.27,
+      "MECHANICS": 5.07,
+      "ELECTRICITY": 7.45,
+      "THERMODYNAMICS": 5.19,
+      "OPTICS": 16.00,
+      "MODERN": 2.00,
       "ADVANCED": 0.0
+    }
+  },
+  {
+    "name": "Doubao-Seed 1.6-Thinking",
+    "id": "doubao-seed-1.6-thinking-250615",
+    "icon": "doubao",
+    "org": "Bytedance",
+    "eed": {
+      "ALL": 45.53,
+      "MECHANICS": 45.95,
+      "ELECTRICITY": 43.32,
+      "THERMODYNAMICS": 49.47,
+      "OPTICS": 46.14,
+      "MODERN": 43.23,
+      "ADVANCED": 47.86
+    },
+    "acc": {
+      "ALL": 34.49,
+      "MECHANICS": 34.56,
+      "ELECTRICITY": 31.68,
+      "THERMODYNAMICS": 41.56,
+      "OPTICS": 36.00,
+      "MODERN": 32.00,
+      "ADVANCED": 31.58
+    }
+  },
+  {
+    "name": "Kimi K2",
+    "id": "kimi-k2-0711-preview",
+    "icon": "kimi",
+    "org": "Moonshot",
+    "eed": {
+      "ALL": 33.56,
+      "MECHANICS": 31.82,
+      "ELECTRICITY": 34.28,
+      "THERMODYNAMICS": 36.57,
+      "OPTICS": 36.30,
+      "MODERN": 34.07,
+      "ADVANCED": 26.55
+    },
+    "acc": {
+      "ALL": 21.25,
+      "MECHANICS": 20.28,
+      "ELECTRICITY": 22.36,
+      "THERMODYNAMICS": 23.38,
+      "OPTICS": 22.00,
+      "MODERN": 22.00,
+      "ADVANCED": 10.53
+    }
+  },
+  {
+    "name": "GLM-4.5",
+    "id": "glm-4.5-2025-07-28",
+    "icon": "zhipu",
+    "org": "Zhipu",
+    "eed": {
+      "ALL": 37.86,
+      "MECHANICS": 38.57,
+      "ELECTRICITY": 37.56,
+      "THERMODYNAMICS": 43.87,
+      "OPTICS": 32.64,
+      "MODERN": 26.68,
+      "ADVANCED": 51.01
+    },
+    "acc": {
+      "ALL": 25.96,
+      "MECHANICS": 26.73,
+      "ELECTRICITY": 26.09,
+      "THERMODYNAMICS": 32.47,
+      "OPTICS": 22.00,
+      "MODERN": 14.00,
+      "ADVANCED": 31.58
+    }
+  },
+  {
+    "name": "GPT-5",
+    "id": "gpt-5-2025-08-07",
+    "icon": "openai",
+    "org": "OpenAI",
+    "eed": {
+      "ALL": 51.07,
+      "MECHANICS": 47.11,
+      "ELECTRICITY": 54.76,
+      "THERMODYNAMICS": 58.83,
+      "OPTICS": 54.05,
+      "MODERN": 42.09,
+      "ADVANCED": 49.23
+    },
+    "acc": {
+      "ALL": 40.42,
+      "MECHANICS": 37.33,
+      "ELECTRICITY": 42.24,
+      "THERMODYNAMICS": 49.35,
+      "OPTICS": 44.00,
+      "MODERN": 30.00,
+      "ADVANCED": 42.11
     }
   },
   {
     "name": "QwQ-32B",
-    "id": "qwen-qwq-32b",
+    "id": "qwq-32b",
     "icon": "qwen",
     "org": "Ali",
     "eed": {
-      "ALL": 4.50,
-      "MECHANICS": 6.60,
-      "ELECTRICITY": 4.55,
-      "THERMODYNAMICS": 3.85,
-      "OPTICS": 0.40,
-      "MODERN": 0.00,
-      "ADVANCED": 3.10
+      "ALL": 27.40,
+      "MECHANICS": 28.22,
+      "ELECTRICITY": 25.82,
+      "THERMODYNAMICS": 28.58,
+      "OPTICS": 32.82,
+      "MODERN": 23.13,
+      "ADVANCED": 23.67
     },
     "acc": {
-      "ALL": 2.6,
-      "MECHANICS": 4.29,
-      "ELECTRICITY": 2.3,
-      "THERMODYNAMICS": 2.13,
-      "OPTICS": 0.0,
-      "MODERN": 0.0,
-      "ADVANCED": 0.0
+      "ALL": 15.85,
+      "MECHANICS": 16.59,
+      "ELECTRICITY": 13.04,
+      "THERMODYNAMICS": 18.18,
+      "OPTICS": 22.00,
+      "MODERN": 14.00,
+      "ADVANCED": 10.53
     }
   },
   {
-    "name": "DeepSeek-R1 Distill-Qwen-32B",
-    "id": "deepseek-r1-distill-qwen-32b",
+    "name": "DeepSeek-R1-Distill-Qwen-32B",
+    "id": "deepSeek-r1-distill-qwen-32b",
     "icon": "deepseek",
     "org": "DeepSeek",
     "eed": {
-      "ALL": 3.16,
-      "MECHANICS": 4.17,
-      "ELECTRICITY": 1.91,
-      "THERMODYNAMICS": 2.80,
-      "OPTICS": 2.26,
-      "MODERN": 3.70,
-      "ADVANCED": 3.10
+      "ALL": 22.06,
+      "MECHANICS": 24.01,
+      "ELECTRICITY": 20.02,
+      "THERMODYNAMICS": 18.58,
+      "OPTICS": 25.91,
+      "MODERN": 21.37,
+      "ADVANCED": 22.78
     },
     "acc": {
-      "ALL": 1.16,
-      "MECHANICS": 1.43,
-      "ELECTRICITY": 0.0,
-      "THERMODYNAMICS": 2.13,
-      "OPTICS": 0.0,
-      "MODERN": 3.7,
-      "ADVANCED": 0.0
+      "ALL": 11.67,
+      "MECHANICS": 13.36,
+      "ELECTRICITY": 9.94,
+      "THERMODYNAMICS": 7.79,
+      "OPTICS": 14.00,
+      "MODERN": 14.00,
+      "ADVANCED": 10.53
     }
   }
 ]

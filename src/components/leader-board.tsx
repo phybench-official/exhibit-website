@@ -112,8 +112,8 @@ export default function LeaderBoard() {
     name: model.name,
     score: model[scoreType][selectedField as keyof ModelScore],
     fill: model.icon === 'openai' ? "hsl(var(--chart-1))" :
-          model.icon === 'gemini' ? "hsl(var(--chart-2))" :
-          model.icon === 'claude' ? "hsl(var(--chart-3))" :
+          model.icon === 'gemini' || model.icon === 'claude' ? "hsl(var(--chart-2))" :
+          model.icon === 'deepseek' ? "hsl(var(--chart-3))" :
           model.icon === 'human' ? "hsl(var(--chart-4))" :
           "hsl(var(--chart-5))"
 
@@ -183,7 +183,7 @@ export default function LeaderBoard() {
             <CardDescription>{t("chartDescription")}</CardDescription>
           </CardHeader>
           <CardContent>
-            <ChartContainer config={chartConfig} className="w-full h-200 lg:h-168 lg:mt-12">
+            <ChartContainer config={chartConfig} className="w-full h-260 lg:h-320 lg:mt-12">
               <BarChart
                 data={chartData}
                 layout="vertical"
