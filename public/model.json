@@ -148,6 +148,54 @@
     }
   },
   {
+    "name": "Qwen-max",
+    "id": "qwen-max-2025-01-25",
+    "icon": "qwen",
+    "org": "Ali",
+    "eed": {
+      "ALL": 15.33,
+      "MECHANICS": 13.77,
+      "ELECTRICITY": 17.6,
+      "THERMODYNAMICS": 14.38,
+      "OPTICS": 23.41,
+      "MODERN": 8.48,
+      "ADVANCED": 14.6
+    },
+    "acc": {
+      "ALL": 6.27,
+      "MECHANICS": 5.07,
+      "ELECTRICITY": 7.45,
+      "THERMODYNAMICS": 5.19,
+      "OPTICS": 16.00,
+      "MODERN": 2.00,
+      "ADVANCED": 0.0
+    }
+  },
+  {
+    "name": "Qwen3 Max",
+    "id": "qwen3-max-preview",
+    "icon": "qwen",
+    "org": "Ali",
+    "eed": {
+      "ALL": 33.64,
+      "MECHANICS": 34.25,
+      "ELECTRICITY": 33.23,
+      "THERMODYNAMICS": 33.28,
+      "OPTICS": 36.67,
+      "MODERN": 28.27,
+      "ADVANCED": 37.77
+    },
+    "acc": {
+      "ALL": 22.13,
+      "MECHANICS": 22.58,
+      "ELECTRICITY": 21.12,
+      "THERMODYNAMICS": 23.38,
+      "OPTICS": 24.00,
+      "MODERN": 20.00,
+      "ADVANCED": 21.05
+    }
+  },
+  {
     "name": "o3 (high)",
     "id": "o3-high",
     "icon": "openai",
@@ -484,6 +532,30 @@
     }
   },
   {
+    "name": "DeepSeek-V3.1",
+    "id": "deepseek-v3-1-250821",
+    "icon": "deepseek",
+    "org": "DeepSeek",
+    "eed": {
+      "ALL": 27.46,
+      "MECHANICS": 27.04,
+      "ELECTRICITY": 29.04,
+      "THERMODYNAMICS": 25.86,
+      "OPTICS": 35.25,
+      "MODERN": 21.92,
+      "ADVANCED": 19.42
+    },
+    "acc": {
+      "ALL": 16.55,
+      "MECHANICS": 16.13,
+      "ELECTRICITY": 16.15,
+      "THERMODYNAMICS": 18.18,
+      "OPTICS": 26.0,
+      "MODERN": 12.0,
+      "ADVANCED": 5.26
+    }
+  },
+  {
     "name": "o3-mini (low)",
     "id": "o3-mini-low",
     "icon": "openai",
@@ -553,30 +625,6 @@
       "OPTICS": 15.69,
       "MODERN": 6.0,
       "ADVANCED": 5.26
-    }
-  },
-  {
-    "name": "Qwen-max",
-    "id": "qwen-max-2025-01-25",
-    "icon": "qwen",
-    "org": "Ali",
-    "eed": {
-      "ALL": 15.33,
-      "MECHANICS": 13.77,
-      "ELECTRICITY": 17.6,
-      "THERMODYNAMICS": 14.38,
-      "OPTICS": 23.41,
-      "MODERN": 8.48,
-      "ADVANCED": 14.6
-    },
-    "acc": {
-      "ALL": 6.27,
-      "MECHANICS": 5.07,
-      "ELECTRICITY": 7.45,
-      "THERMODYNAMICS": 5.19,
-      "OPTICS": 16.00,
-      "MODERN": 2.00,
-      "ADVANCED": 0.0
     }
   },
   {
