@@ -412,6 +412,30 @@
     }
   },
   {
+    "name": "Gemini-3 Pro Preview Thinking",
+    "id": "gemini-3-pro-preview-thinking",
+    "icon": "gemini",
+    "org": "Google",
+    "eed": {
+      "ALL": 61.39,
+      "MECHANICS": 62.65,
+      "ELECTRICITY": 63.43,
+      "THERMODYNAMICS": 61.46,
+      "OPTICS": 57.94,
+      "MODERN": 54.43,
+      "ADVANCED": 56.79
+    },
+    "acc": {
+      "ALL": 50.35,
+      "MECHANICS": 52.07,
+      "ELECTRICITY": 52.80,
+      "THERMODYNAMICS": 50.65,
+      "OPTICS": 46.00,
+      "MODERN": 42.00,
+      "ADVANCED": 42.11
+    }
+  },
+  {
     "name": "o1",
     "id": "o1",
     "icon": "openai",
