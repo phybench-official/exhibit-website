@@ -32,5 +32,12 @@
     "settings": "Performance Mode Settings",
     "currentLow": "Currently in low performance mode, animations reduced",
     "currentHigh": "Currently in high performance mode, full animations enabled"
+  },
+  "wechat": {
+    "joinGroup": "Join NIPS Discussion Group",
+    "groupTitle": "PHYBench NIPS Discussion Group",
+    "groupDescription": "Scan QR code to join WeChat group for discussion with researchers",
+    "scanQR": "Scan QR code to join group chat",
+    "joinDiscussion": "Join Discussion"
   }
 }

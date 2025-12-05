@@ -7,7 +7,8 @@
     "hfrank": "🥳 重磅！爆炸激动！ 🎉 \n\n 我们的数据集成功冲上 Hugging Face Datasets 趋势榜第三名！🥉✨ 就在2025年5月1日！ 这太不可思议了！🚀 \n\n 万分感谢全球社区的所有朋友们！🙏🙏 你们的关注、star和使用，让我们的工作获得如此高的认可！🤗 \n\n 还没体验过？👇 快来 Hugging Face 探索我们的数据集吧！一起加速AI研究！",
     "qwen3release": "🚀 PHYBench 排行榜更新 | Qwen3 入榜！\n 我们最新完成了对 Qwen3-235B-A22B 模型的评测，并在 API 调用中强制启用推理功能以确保推理性能的充分发挥。\n\n 📊 实验结果显示，该模型在 PHYBench 上取得了：\n EED Score：40.76 \n Accuracy：28.70% \n\n 这一成绩使 Qwen3 暂列排行榜第 4 名，展现出其在物理推理能力上的显著进步。\n 🎉 诚挚祝贺 Ali Qwen 团队！",
     "versionUpdate": "🚀 AI物理推理能力评估迎来重大升级！\n PHYBench项目发布重磅更新：全新交互式网站上线，提供20个主流模型排行榜，并深入揭示AI在“应用物理定律”方面的“肤浅推理”问题。\n 速览新版论文，了解更多前沿发现！",
-    "grok4": "Grok4创造物理推理新纪录，距人类专家水平仍有差距 \n\nPHYBench团队发布Grok4最新评测结果：\n Grok 4 \t\t\t\t ACC: 42.33 \t EED: 53.03\n Gemini 2.5 Pro \t ACC: 36.87 \t EED: 49.46\n Human Expert \t ACC: 61.90 \t EED: 71.40\n\nGrok4全面超越前SOTA模型Gemini 2.5 Pro，但仍明显落后于人类专家基准。\n值得关注的是，Grok4在HLE上断崖领先其他模型，但在PHYBench上仅取得微弱优势，这凸显了PHYBench更能客观衡量模型真实能力。与此同时，国内大模型表现紧随其后，并未掉队。\n北大物理学院将持续更新PHYBench，致力于为大模型物理推理评测提供最客观评判。"
+    "grok4": "Grok4创造物理推理新纪录，距人类专家水平仍有差距 \n\nPHYBench团队发布Grok4最新评测结果：\n Grok 4 \t\t\t\t ACC: 42.33 \t EED: 53.03\n Gemini 2.5 Pro \t ACC: 36.87 \t EED: 49.46\n Human Expert \t ACC: 61.90 \t EED: 71.40\n\nGrok4全面超越前SOTA模型Gemini 2.5 Pro，但仍明显落后于人类专家基准。\n值得关注的是，Grok4在HLE上断崖领先其他模型，但在PHYBench上仅取得微弱优势，这凸显了PHYBench更能客观衡量模型真实能力。与此同时，国内大模型表现紧随其后，并未掉队。\n北大物理学院将持续更新PHYBench，致力于为大模型物理推理评测提供最客观评判。",
+    "wechatGroup": "🤝 加入PHYBench NIPS交流群！\n\n 为了更好地与社区交流，我们创建了PHYBench NIPS交流微信群。\n\n 🎯 群内讨论内容包括：\n - PHYBench最新进展\n - 物理AI研究讨论\n - NIPS会议相关交流\n - 技术问题解答\n\n 📱 扫描下方二维码加入群聊，与研究人员直接交流！\n\n ⚠️ 注意：二维码7天内有效，如过期请联系我们获取最新二维码。"
   },
   "hide": "收起更多",
   "show": "显示更多"

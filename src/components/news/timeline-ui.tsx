@@ -7,7 +7,7 @@ import Zmage from "../ui/zoom-image";
 
 export function TimelineUI() {
 
-  const { t } = useTranslation("news");
+  const { t } = useTranslation(["news", "common"]);
 
   const releasepaper = {
     authorName: "PHYBench",
@@ -264,7 +264,39 @@ export function TimelineUI() {
     timestamp: "May 25, 2025",
   }
 
+  const wechatGroup = {
+    authorName: "PHYBench",
+    authorHandle: "phybench-official",
+    icon: "wechat",
+    authorImage:
+      "https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg",
+    content: (
+      <>
+        <EllipsisText 
+          text={t("post.wechatGroup")}
+          className=" whitespace-pre-line mb-4"
+        />
+        <div className="flex flex-col w-full items-start">
+          <p className="text-sm text-gray-500 mb-2 dark:text-gray-400 font-medium">
+            {t("wechat.scanQR", { ns: "common" })} 
+          </p>
+          <Zmage
+            src="/images/wechat-group-qr.png"
+            alt="PHYBench NIPS Discussion Group"
+            className="rounded-lg w-full max-w-[200px] object-cover border border-gray-200 dark:border-gray-700 shadow-sm"
+          />
+        </div>
+      </>
+    ),
+    isVerified: true,
+    timestamp: "Dec 5, 2025",
+  };
+
   const data = [
+    {
+      title: "2025-12-05",
+      content: <XCard {...wechatGroup} />,
+    },
     {
       title: "2025-07-12",
       content: <XCard {...releaseGrok4} />,

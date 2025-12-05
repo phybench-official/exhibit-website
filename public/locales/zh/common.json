@@ -32,5 +32,12 @@
     "settings": "性能模式设置",
     "currentLow": "当前为低性能模式，动画效果已减弱",
     "currentHigh": "当前为高性能模式，动画效果完整"
+  },
+  "wechat": {
+    "joinGroup": "加入NIPS交流群",
+    "groupTitle": "PHYBench NIPS交流群",
+    "groupDescription": "扫码加入微信群，与研究人员交流讨论",
+    "scanQR": "扫描二维码加入群聊",
+    "joinDiscussion": "加入讨论"
   }
 }
